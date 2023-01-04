@@ -1,0 +1,2055 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CPP Cheatsheet</title>
+        <meta name="description" content="Roughly 155 characters">
+
+        <link rel="stylesheet" type="text/css" href="style/style.css">
+
+        <script
+            src="script.js"></script>
+        <script src="script.js"></script>
+    </head>
+
+    <header>
+        <div class="top_of_page">HTML</div>
+            <nav class="nav">
+                <ul class="ulList">
+                    <li><a href="index.html">Home</a>
+                        <li><a href="java_script.html">JavaScript Programming Page</a>
+                        <li><a href="java.html">Java Programming Page</a>
+                        <li><a href="cpp.html">Cpp Programming Page</a>
+                        <li><a href="csharp.html">C# Programming Page</a>
+                        <li><a href="r.html">R Programming Page</a>	
+                        <li><a href="c.html">C Programming Page</a>
+                        <li><a href="python.html">Python Programming Page</a>
+                        <li><a href="batch_scripting.html">Batch Scripting Page</a>
+                        <li><a href="bash_scripting.html">Bash Scripting Page</a>
+                        <li><a href="sql.html">SQL Page</a>
+                        <li><a href="assembly.html">Assembly Language Page</a>
+                        <li><a href="powershell.html">Powershell</a></li>
+                        <li><a href="ccna.html">ccna</a></li>
+                </ul>
+            </nav>
+        </div>    
+    </header>
+
+            
+    <main role="main">
+        <article id="Hello World">
+            <h1> basic hello world program</h1>
+            <p>
+                    #include &ltiostream&gt <br/>
+                    using namespace std; <br/>
+                    
+                    int main() <br/>
+                    { <br/>
+                        &emsp;    cout << "Hello World"; <br/>
+                        &emsp;    return 0; <br/>
+                    }
+            </p>
+        </article>
+
+        <article id="cout">
+            <h1>console output</h1>
+            <p>
+                cout << "This is output";
+            </p>
+        </article>
+
+        <article id="cin">
+            <h1>console input</h1>
+            <p>
+                cin >> a_variable;
+            </p>
+        </article>
+
+        <article id="DataTypes">
+            <h1>
+                Data types
+            </h1>
+            <p>
+                char <br/>
+                int       <br/>
+                float<br/>
+                double<br/>
+                void<br/>
+                bool<br/>
+            </p>
+        </article>
+
+        <article id="Casting">
+            <h1>Casting</h1>
+            <p>
+                C Style Casting <br/>
+                #include &ltiostream&gt <br/>
+                #include &ltcmath&gt <br/>
+
+                int main(int argc, char *argv[]) <br/>
+                { <br/>
+                &emsp;    double x = M_PI; <br/>
+                &emsp;    int xx = (int) x; <br/>
+                &emsp;    std::cout << xx << "\n"; <br/>
+
+                &emsp;    long z = LONG_MAX; <br/>
+                &emsp;    int zz = (int) z;  // dangerous. overflow <br/>
+                &emsp;    std::cout << zz << "\n"; <br/>
+                } <br/>
+            </p>
+
+            <p id="Const Casting">
+                Const Casting
+                #include &ltiostream&gt <br/>
+
+                void f(const int &x) <br/>
+                {<br/>
+                    const_cast<int &>(x) = 0; <br/>
+                } <br/>
+
+                int main(int argc, char *argv[]) <br/>
+                { <br/>
+                &emsp;    int x = 123; <br/>
+                &emsp;    f(x); <br/>
+                &emsp;    std::cout << x << "\n"; <br/>
+                }
+
+            </p>
+
+            
+            <h1 id="Reinterpret Casting">Reinterpret Casting</h1>
+            <p>
+                #include &ltiostream&gt <br/>
+                #include &ltiomanip&gt <br/>
+
+                struct A { int x; int y; }; <br/>
+
+                int main(int argc, char *argv[]) <br/>
+                {
+                    &emsp;    A a{1, 2}; <br/>
+
+                    &emsp;    // convert a struct to a byte array <br/>
+                    &emsp;    char *buf = reinterpret_cast&ltchar *&gt(&a); <br/>
+                    &emsp;    for (int i = 0; i < sizeof(A); ++i)  <br/>
+                    &emsp;    { <br/> 
+                    &emsp;        std::cout << static_cast<int>(buf[i]) << " "; <br/>
+                    &emsp;    } <br/>
+                    &emsp;    // output: 1 0 0 0 2 0 0 0 <br/>
+                } <br/>
+            </p>
+
+            
+            <h1 id="Static Casting">Static Casting</h1>
+            <p>
+                #include &ltiostream&gt <br/>
+                #include &ltmemory&gt <br/>
+
+                struct A  <br/>
+                { <br/>
+                    &emsp; virtual void f() { std::cout << __func__ << "\n"; } <br/>
+                    &emsp; virtual ~A() = default; <br/>
+                }; <br/>
+
+                struct B : public A {; <br/>
+                    &emsp; B(int *x) : x_{x} {} <br/>
+                    &emsp; int *g() { return x_; } <br/>
+                    &emsp; int *x_; <br/>
+                }; <br/>
+
+                int main(int argc, char *argv[]) <br/>
+                { <br/>
+                    &emsp; auto a = std::make_unique&ltA&gt(); <br/>
+                    &emsp; // downcasting may be dangerous <br/>
+                    &emsp; auto b = static_cast&ltB *&gt(a.get()); <br/>
+                    &emsp; auto x = b->g(); <br/>
+                    &emsp; std::cout << *x << "\n"; <br/>
+                }
+            </p>
+
+            <p id="Dynamic Casting">
+                Dynamic Casting <br/>
+                #include &ltiostream&gt <br/>
+                #include &ltmemory&gt <br/>
+
+                struct A <br/>
+                { <br/>
+                    &emsp; virtual void f() { std::cout << __func__ << "\n"; } <br/>
+                }; <br/>
+
+                struct B : public A <br/>
+                {
+                    &emsp; void f() override { std::cout << __PRETTY_FUNCTION__ << "\n"; } <br/>
+                }; <br/>
+
+                int main(int argc, char *argv[]) <br/> 
+                {
+                    &emsp; auto a = std::make_unique&ltA&gt(); <br/>
+                    &emsp; auto b = std::make_unique&ltB&gt(); <br/>
+
+                    &emsp; // downcast <br/>
+                    &emsp; auto bb = dynamic_cast&ltB *&gt(a.get()); <br/>
+                    &emsp; std::cout << "Is dynamic_cast(*a) to *b success? " << !!bb << "\n"; <br/>
+                    &emsp; // output: Is dynamic_cast(*a) to *b success? 0 <br/>
+
+                    &emsp; // upcast <br/>
+                    &emsp; auto aa = dynamic_cast&ltA *&gt(b.get()); <br/>
+                    &emsp; std::cout << "Is dynamic_cast(*b) to *a success? " << !!aa << "\n"; <br/>
+                    &emsp; // output: Is dynamic_cast(*a) to *b success? 1 <br/>
+                }
+            </p>
+        </article>
+
+        <article id="Escape Sequences">
+            <h1>
+                Escape Sequences
+            </h1>
+            <p>
+                Alarm or Beep <br/>
+                "\a" <br/>
+                Backspace <br/>
+                "\b" <br/>
+                Form feed <br/>
+                "\f" <br/>
+                Newline <br/>
+                "\n" <br/>
+                Carriage return <br/>
+                "\r" <br/>
+                Tab  <br/>
+                "\t" <br/>
+                Backslash <br/>
+                "\\" <br/>
+                Single qoute <br/>
+                "\'" <br/>
+                Quetions mark <br/>
+                "\?" <br/>
+                Octla number <br/>
+                "\nnn" <br/>
+                Hexadecimal number <br/>
+                "\xhh" <br/>
+                null <br/>
+                "\0" <br/>
+
+            </p>
+        </article>
+
+        <article id="Comments">
+            
+               <h1>
+                    Comments 
+               </h1> 
+                <p>
+                \\ <br/>
+                /* */ <br/>
+            </p>
+        </article>
+
+        <article id="Strings">
+            <h1>
+                Strings
+            </h1>
+            <p>
+                Declaring Strings <br/>
+
+                // Include the string library <br/>
+                #include &ltstring&gt <br/>
+
+                // String variable <br/>
+                string variable1 = "Hello World"; <br/>
+
+                Append function <br/>
+                string firstName = "Harry "; <br/>
+                string lastName = "Bhai"; <br/>
+                string fullName = firstName.append(lastName); <br/>
+                cout << fullName; <br/>
+
+                length function <br/>
+                string variable1 = "CodeWithHarry"; <br/>
+                cout << "The length of the string is: " << variable1.length(); <br/>
+                
+                Accessing and changing string characters <br/>
+                string variable1 = "Hello World"; <br/> 
+                variable1[1] = 'i'; <br/>
+                cout << variable1; <br/>
+            </p>
+        </article>
+
+        <article id="Math Library">
+            
+             <h1>Math Library</h1>   
+            <p>
+
+                
+                Max function <br/>
+                cout << max(25,140); <br/>
+
+                Min function <br/>
+                cout << min(55,50); <br/>
+
+                Sqrt function <br/>
+                cout << sqrt(144); <br/>
+
+                Ceil function <br/>
+                double a=ceil(1.9); <br/>
+
+                Floor function <br/>
+                double a-floor(1.02); <br/>
+
+                Pow function <br/>
+                int a=pow(x,y); <br/>
+
+            </p>
+        </article>
+
+        <article id="Decision Making">
+            <h1>
+                Decision Making (Control Structures)
+            </h1>
+            <p>    
+                If Statement <br/>
+
+                if (condition) <br/>
+                {  <br/>
+                    &emsp;// This block of code will get executed, if the condition is True <br/>
+                } <br/>
+
+                if-else Statement <br/>
+                if (condition)  <br/>
+                { <br/>
+                    &emsp;// If condition is True then this block will get executed <br/>
+                }  <br/>
+                else  <br/>
+                { <br/>
+                    &emsp; // If condition is False then this block will get executed <br/>
+                } <br/>
+
+                if-else-if Statement  <br/>
+                if (condition)  <br/>
+                { <br/>
+                    &emsp; // Statements; <br/>
+                } <br/>
+                else if (condition) <br/>
+                { <br/>
+                    &emsp; // Statements; <br/>
+                } <br/>
+                else <br/>
+                { <br/>
+                    &emsp; // Statements <br/>
+                } <br/>
+
+                Ternary Operators <br/>
+                variable = (condition) ? expressionTrue : expressionFalse; <br/>
+
+                Switch Case Statement <br/>
+                switch (expression) <br/>
+                { <br/>
+                    &emsp;case constant-expression:  <br/>
+                    &emsp;statement1; <br/>
+                    &emsp;statement2; <br/>
+                    &emsp;break; <br/>
+                    &emsp;case constant-expression: <br/>
+                    &emsp;statement; <br/>
+                    &emsp;break; <br/>
+                    &emsp;... <br/>
+                    &emsp;default:  <br/>
+                    &emsp;statement; <br/>
+                } <br/>
+            </p>
+        </article>
+
+        <article id="While Loop">
+            <h1>while loop</h1>
+            <p>
+                
+                while (/* condition */) <br/>
+                { <br/>
+                    &emsp; /* code block to be executed */ <br/>
+                } <br/>
+
+                do-while loop <br/>
+                do <br/>
+                { <br/>
+                    &emsp; /* code */ <br/>
+                } while (/* condition */); <br/>
+
+                for loop <br/>
+                for (int i = 0; i &lt count; i++) <br/>
+                { <br/>
+                    &emsp; /* code */ <br/>
+                } <br/>
+            </p>
+
+            <h1>Break Statement</h1>
+             <p>break keyword inside the loop is used to terminate the loop <br/>
+                break; <br/>
+            </p>
+
+            <h1>Continue Statement</h1>
+            <p>    
+                continue keyword skips the rest of the current iteration 
+                of the loop and returns to the starting point of the loop
+                continue; <br>
+            </p>
+        </article>
+
+        <article id="References">
+            <h1>References</h1>
+            <p>
+                
+                Reference is an alias for an already existing variable. 
+                Once it is initialized to a variable, it cannot be changed to refer to another 
+                variable. So, it's a const pointer. <br/>
+
+                Creating References <br/>
+                string var1 = "Value1"; // var1 variable <br/>
+                string &var2 = var1; // reference to var1 <br/>
+            </p>
+        </article>
+
+        <article id="Pointers">
+            <h1>Pointers</h1>
+            <p>
+                Pointers <br/>
+                Pointer is a variable that holds the memory address of another variable <br/>
+
+                Declaration <br/>
+                datatype *var_name;  <br/>
+
+                var_name = &amp variable2; <br/>
+
+                int var = 2, *p; <br/>
+                p = &amp var;// The variable p holds the address of the variable var <br/>
+                int *const ptr; <br/>
+                const int* ptr; <br/>
+            </p>
+            <h1 id="Smart Pointers">Smart Pointers</h1>
+            <p>
+                Custom Deleters <br/>
+                #include &ltstdio.h&gt <br/>
+                #include &ltstdlib.h&gt <br/>
+                #include &ltstring.h&gt <br/>
+                #include &lterrno.h&gt <br/>
+                #include &ltiostream&gt <br/>
+                #include &ltstring&gt <br/>
+                #include &ltexception&gt <br/>
+                #include &ltmemory&gt <br/>
+
+                using FilePtr = std::unique_ptr&ltFILE, int (*)(FILE *)&gt; <br/>
+
+                constexpr void assert_that(bool statement, const char *msg) <br/>
+                {  <br/>
+                    &emsp; if (!statement)  <br/>
+                    &emsp; { <br/>
+                        &emsp; throw std::runtime_error(msg); <br/>
+                    &emsp; } <br/>
+                } <br/>
+
+                int main(int argc, char *argv[]) <br/>
+                { <br/>
+
+                    &emsp; assert_that(argc == 2, "Usage: command [path]"); <br/>
+
+                    &emsp; FILE *f = nullptr; <br/>
+                    &emsp; f = fopen(argv[1], "r+"); <br/>
+                    &emsp; assert_that(f, strerror(errno)); <br/>
+
+                    &emsp; // assign FILE* to a unique_ptr <br/>
+                    &emsp; FilePtr fptr{f, fclose}; <br/>
+                    &emsp; assert_that(!!fptr, strerror(errno)); <br/>
+                    &emsp; assert_that(fseek(fptr.get(), 0, SEEK_END) == 0, strerror(errno)); <br/>
+
+                    &emsp; long size = ftell(fptr.get()); <br/>
+                    &emsp; assert_that(size >=0, strerror(errno)); <br/>
+                    &emsp; rewind(fptr.get()); <br/>
+
+                    &emsp; // using unique_ptr to create a buffer instead of using malloc <br/>
+                    &emsp; std::unique_ptr&ltchar[]&gt buf{ new char[size + 1]{0} }; <br/>
+                    &emsp; assert_that(!!buf, strerror(errno));  <br/>
+
+                    &emsp; size_t r = fread(buf.get(), 1, size, fptr.get()); <br/>
+                    &emsp; assert_that(r == size, "Reading error"); <br/>
+                    &emsp;std::cout << buf.get(); <br/>
+                    &emsp; end: <br/>
+                    &emsp; return 0; <br/>
+                }
+            </p>
+
+            <h1 id="Make_shared">std::make_shared and std::make_unique</h1>
+            <p>
+                std::make_shared and std::make_unique are the recommended 
+                ways to create smart pointers because compilers do guarantee 
+                the order of executions, which may introduce memory leaks when 
+                an exception is thrown. For example, the compilers may call new T,
+                then raise(), and so on before foo is called. In this case, 
+                std::unique_ptr does not know the pointer T yet, so it is still 
+                on the heap.
+            </p>
+                
+            <p>
+                using uptr = std::unique_ptr&ltT&gt; <br/>
+
+                bool raise() <br/>
+                { <br/>
+                        &emsp; throw std::exception(); <br/>
+                        &emsp; return true; <br/>
+                }
+                    
+                foo(uptr(new T), raise(), uptr(new T)); <br/>
+            </p>
+        </article>
+
+        <article id="Time">
+            <h1>
+                Time
+            </h1>
+            <h1>Timestampe</h1>
+            <p>
+                // g++ -std=c++17 -Wall -Werror -O3 a.cc <br/>
+
+                #include &ltiostream&gt <br/>
+                #include &ltchrono&gt <br/>
+
+                using milliseconds = std::chrono::milliseconds; <br/>
+                namespace chrono = std::chrono; <br/>
+
+                int main(int argc, char *argv[]) <br/>
+                {
+                    &emsp; auto now = std::chrono::system_clock::now(); <br/>
+                    &emsp; auto t = now.time_since_epoch(); <br/>
+                    &emsp; std::cout << chrono::duration_cast&ltmilliseconds&gt(t).count() << "\n"; <br/>
+                }
+            </p>
+            <h1>To chrono::chrono::time_point</h1>
+            <p>
+                #include &ltiostream&gt <br/>
+                #include &ltiomanip&gt <br/>
+                #include &ltchrono&gt <br/>
+                #include &ltctime&gt <br/>
+                
+                namespace chrono = std::chrono; <br/>
+                using ms = std::chrono::milliseconds; <br/>
+                
+                int main(int argc, char *argv[]) <br/>
+                { <br/>
+                  &emsp;using namespace std::literals; <br/>
+                  &emsp;auto s = 1602207217323ms; <br/>
+                  &emsp;chrono::system_clock::time_point tp(s); <br/>
+                  &emsp;std::time_t t = chrono::system_clock::to_time_t(tp); <br/>
+                  &emsp;std::cout << std::put_time(std::gmtime(&t), "%FT%TZ") << "\n"; <br/>
+                }<br/>
+            </p>
+
+            <h1>Duration</h1>
+            <p>
+                    #include &ltiostream&gt <br/>
+                    #include &ltchrono&gt <br/>
+                    
+                    int main(int argc, char *argv[]) <br/>
+                    { <br/>
+                        &emsp; using seconds = std::chrono::seconds; <br/>
+                        &emsp; using namespace std::chrono_literals; <br/>
+                        &emsp; auto now = std::chrono::system_clock::now(); <br/>
+                        &emsp; auto future = now + 1ms; <br/>
+                        &emsp; auto t = std::chrono::system_clock::to_time_t(future); <br/>
+                        &emsp; std::cout << "timestamp: " << std::ctime(&t); <br/>
+                    
+                        &emsp; auto start = std::chrono::system_clock::now(); <br/>
+                        &emsp; auto end = std::chrono::system_clock::now() + 10s; <br/>
+                        &emsp; auto duration = duration_cast<seconds>(end - start); <br/>
+                        &emsp; std::cout << duration.count() << " sec\n";
+                    
+                        &emsp; // output: <br/>
+                        &emsp; // timestamp: Thu Oct  6 12:39:35 2022 <br/>
+                        &emsp; // 10 sec <br/>
+                    }
+            </p>
+
+            <h1>Profiling</h1>
+            <p>
+                    #include &ltiostream&gt <br/>
+                    #include &ltchrono&gt <br/>
+                    
+                    #include &ltunistd.h&gt <br/>
+                    
+                    using milliseconds = std::chrono::milliseconds; <br/>
+                    namespace chrono = std::chrono; <br/>
+                    
+                    int main(int argc, char *argv[]) <br/>
+                    { <br/>
+                      &emsp; auto start = std::chrono::steady_clock::now(); <br/>
+                      &emsp; sleep(3); <br/>
+                      &emsp; auto end = std::chrono::steady_clock::now(); <br/>
+                      &emsp; auto d = end - start; <br/>
+                      &emsp; std::cout << chrono::duration_cast&ltmilliseconds&gt(d).count() << "\n"; <br/>
+                    }
+            </p>
+
+            <h1>Literals</h1>
+            <p></p>
+
+            <h1>Format Time</h1>
+            <p>
+                    #include &ltiostream&gt <br/>
+                    #include &ltiomanip&gt <br/>
+                    #include &ltctime&gt <br/>
+                    #include &ltstdlib.h&gt <br/>
+                    
+                    int main(int argc, char *argv[]) <br/>
+                    {
+                        &emsp; std::time_t t = std::time(nullptr); <br/>
+                        &emsp; constexpr char fmt[] = "%c %Z"; <br/>
+                        &emsp; std::cout << "UTC " << std::put_time(std::gmtime(&t), fmt) << "\n"; <br/>
+                        &emsp; std::cout << "Local " << std::put_time(std::localtime(&t), fmt) << "\n"; <br/>
+                    
+                        &emsp; std::string tz = "America/Chicago"; <br/>
+                        &emsp; putenv(tz.data()); <br/>
+                        &emsp; std::cout << "Chicago " << std::put_time(std::localtime(&t), fmt) << "\n"; <br/>
+                    }
+            </p>
+
+            <h1>To time_t</h1>
+            <p>
+                    #include &ltiostream&gt <br/>
+                    #include &ltiomanip&gt <br/>
+                    #include &ltchrono&gt <br/>
+                    #include &ltctime&gt <br/>
+                    
+                    namespace chrono = std::chrono; <br/>
+                    
+                    int main(int argc, char *argv[]) <br/>
+                    { <br/>
+                      &emsp; auto now = chrono::system_clock::now(); <br/>
+                      &emsp; std::time_t t = std::chrono::system_clock::to_time_t(now); <br/>
+                      &emsp; std::cout << std::put_time(std::gmtime(&t), "%FT%TZ") << "\n"; <br/>
+                    }
+            </p>
+
+            <h1>ISO 8601 Format</h1>
+            <p>
+                    #include &ltiostream&gt <br/>
+                    #include &ltiomanip&gt <br/>
+                    #include &ltchrono&gt <br/>
+                    #include &ltctime&gt <br/>
+                    
+                    namespace chrono = std::chrono; <br/>
+                    
+                    int main(int argc, char *argv[]) <br/>
+                    {
+                      &emsp; auto now = chrono::system_clock::now(); <br/>
+                      &emsp; std::time_t t = std::chrono::system_clock::to_time_t(now); <br/>
+                      &emsp; std::cout << std::put_time(std::gmtime(&t), "%Y-%m-%dT%H:%M:%SZ") << "\n"; <br/>
+                      &emsp; std::cout << std::put_time(std::gmtime(&t), "%FT%TZ") << "\n"; <br/>
+                      &emsp; std::cout << std::put_time(std::gmtime(&t), "%FT%TZ%z") << "\n"; <br/>
+                    }
+            </p>
+        </article>
+
+        <article id="Functions_Recursion">
+            <h1>Functions & Recursion</h1>
+            <p>
+                
+                Functions are used to divide an extensive program into smaller 
+                pieces. It can be called multiple times to provide reusability 
+                and modularity to the C program. <br/>
+
+                //Function Definition <br/>
+                return_type function_name(data_type parameter...) <br/>
+                {  <br/>
+                    //code to be executed  <br/>
+                } <br/>
+            </p>
+            <h1>Function Call</h1>
+            <p>
+                function_name(arguments);
+            </p>
+            <h1>Recursion</h1>
+            <p>
+                Recursion is when a function calls a copy of itself to
+                work on a minor problem. And the function that calls 
+                itself is known as the Recursive function. <br/>
+
+                void recurse() <br/>
+                { <br/>
+                    &emsp; ... .. ... <br/>
+                    &emsp; recurse(); <br/>
+                    &emsp; ... .. ... <br/>
+                } 
+            </p>
+        </article>
+
+        <article id="OOP">
+            
+            <h1>Object-Oriented Programming</h1>
+            <p> 
+                It is a programming approach that primarily focuses on
+                 using objects and classes. The objects can be any 
+                 real-world entities. <br/>
+
+                class <br/>
+                class Class_name  <br/>
+                {
+                    &emsp; public: // Access specifier <br/>
+                    &emsp; &emsp; // fields <br/>
+                    &emsp; &emsp; // functions <br/>
+                    &emsp; &emsp; // blocks <br/>
+                };<br/>
+             </p>   
+             <h1>object</h1>   
+             <p>
+                Class_name ObjectName;
+            </p>
+            <h1>Constructors</h1>
+            <p>
+                It is a special method that is called automatically as soon as 
+
+
+                the object is created.<br/>
+
+                class className <br/>
+                { // The class<br/>
+                    &emsp; public: // Access specifier<br/>
+                    &emsp; className() <br/>
+                    &emsp; { <br/>
+                        &emsp;  &emsp; // Constructor<br/>
+                        &emsp; &emsp; cout << "Code With Harry";<br/>
+                        &emsp; }<br/>
+                };<br/>
+
+                int main() <br/>
+                {<br/>
+                    &emsp; className obj_name; <br/>
+                    &emsp; return 0;<br/>
+                }<br/>
+            </p>
+            <h1>Encapsulation</h1>
+            <p> Data encapsulation is a mechanism of bundling the data, 
+                and the functions that use them and data abstraction is a mechanism
+                of exposing only the interfaces and hiding the implementation 
+                details from the user.
+            </p>    
+            
+            <p> 
+                #include &ltiostream&gt<br/>
+                using namespace std; <br/>
+                class ExampleEncap <br/>
+                { <br/>
+                   &emsp;  private: <br/>
+                   &emsp;  &emsp; /* Since we have marked these data members private, <br/>
+                   &emsp;  &emsp; * any entity outside this class cannot access these <br/>
+                   &emsp;  &emsp; * data members directly, they have to use getter and <br/>
+                   &emsp;  &emsp; * setter functions. <br/>
+                   &emsp;  &emsp; */ <br/>
+                   &emsp;  &emsp; int num; <br/>
+                   &emsp;  &emsp; char ch; <br/>
+                   &emsp;  public: <br/>
+                   &emsp;  &emsp; /* Getter functions to get the value of data members. <br/>
+                   &emsp;  &emsp; * Since these functions are public, they can be accessed <br/>
+                   &emsp;  &emsp; * outside the class, thus provide the access to data members <br/>
+                   &emsp;  &emsp; * through them <br/>
+                   &emsp;  &emsp; */ <br/>
+                   &emsp;  &emsp; int getNum() const { <br/>
+                   &emsp;  &emsp; &emsp; return num; <br/>
+                   &emsp;  } <br/>
+                   &emsp;  char getCh() const { <br/>
+                   &emsp;  &emsp; return ch; <br/>
+                   &emsp;  } <br/>
+                   &emsp;  /* Setter functions, they are called for assigning the values <br/>
+                   &emsp;  * to the private data members. <br/>
+                   &emsp;  */ <br/>
+                   &emsp;  &emsp; void setNum(int num) { <br/>
+                   &emsp;  &emsp; &emsp; this->num = num; <br/>
+                   &emsp;  } <br/>
+                   &emsp;  &emsp; void setCh(char ch) { <br/>
+                   &emsp;  this->ch = ch; <br/>
+                   &emsp;  } <br/>
+                }; <br/>
+                int main()<br/>
+                { <br/>
+                    &emsp; ExampleEncap obj; <br/>
+                    &emsp; obj.setNum(100); <br/>
+                    &emsp; obj.setCh('A'); <br/>
+                    &emsp; cout << obj.getNum()<< endl; <br/>
+                    &emsp; cout << obj.getCh() << endl; <br/>
+                    &emsp; return 0; <br/>
+                }<br/>
+            </p>
+            <br/>   
+            <hr />
+            <p>
+                #include &ltiostream&gt<br/>
+                usingnamespacestd;<br/>
+                    
+                classEmployee {<br/>
+                    &emsp; private:<br/>
+                    &emsp; &emsp; int name;<br/>
+                    &emsp; 
+                    &emsp; public:<br/>
+                    &emsp; &emsp; // Setter<br/>
+                    &emsp; &emsp; voidsetName(int n) {<br/>
+                    &emsp; &emsp; name= s;<br/>
+                    &emsp; }<br/>
+                    &emsp; // Getter<br/>
+                    &emsp; intgetName() {<br/>
+                    &emsp; &emsp; return name;<br/>
+                    &emsp; }<br/>
+                };<br/>
+                    
+                intmain() {<br/>
+                    &emsp; Employee myObj;<br/>
+                    &emsp; myObj.setName("Bob");<br/>
+                    &emsp; cout << myObj.getName();<br/>
+                    &emsp; return0;<br/>
+                }     
+            </p>   
+            <h1>Inheritance</h1>
+            <p> C++ supports inheritance, allowing you to inherit the members 
+                and variables of one class to another. The inheriting class is 
+                the child class and the other is the parent class. 
+                You must use (:) symbol to inherit:
+            </p>
+            <p>
+                // Parent class<br/>
+                classVehicle <br/>
+                {<br/>
+                    &emsp; public:<br/>
+                    &emsp; &emsp; string brand = "Ford";<br/>
+                    &emsp; &emsp; voidsound() {<br/>
+                    &emsp; &emsp; &emsp; cout << "honk \n" ;<br/>
+                    &emsp; &emsp; }<br/>
+                };<br/>
+
+                // Child class<br/>
+                classCar: public Vehicle {<br/>
+                    &emsp; public:<br/>
+                    &emsp; &emsp; string model = "Mustang";<br/>
+                };<br/>
+
+                int main() {<br/>
+                    &emsp; Car myCar;<br/>
+                    &emsp; myCar.sound();<br/>
+                    &emsp; cout << myCar.brand + " " + myCar.model;<br/>
+                    &emsp; return0;<br/>
+                }
+            </p>
+
+            <h1>Polymorphism</h1>
+            <p> 
+                Polymorphism specifies the “many forms.” It is the ability of a 
+                single message to be displayed in multiple forms and takes place 
+                when you have multiple child classes and one base class. 
+            </p>
+            <h1>For example:</h1>
+            <h2>// Parent class</h2>
+            <p>
+                classAnimal {<br/>
+                    &emsp; public:<br/>
+                    &emsp; &emsp; voidsound() {<br/>
+                    &emsp; &emsp; cout << "The animal makes a sound \n" ;<br/>
+                    &emsp; &emsp; }<br/>
+                };<br/>
+            </p>
+            <h2>// Child class</h2> 
+            <p>
+                classPig : public Animal {<br/>
+                    &emsp; public:<br/>
+                    &emsp; &emsp; voidsound() {<br/>
+                    &emsp; &emsp; &emsp; cout << "The pig says: wee wee \n" ;<br/>
+                    &emsp; &emsp; }<br/>
+                };<br/>
+            </p>
+            <h2>// Derived class</h2>
+            <p>
+                classDog : public Animal {<br/>
+                    &emsp; public:<br/>
+                    &emsp; &emsp; voidsound() {<br/>
+                    &emsp; &emsp; &emsp; cout << "The dog says: bow wow \n" ;<br/>
+                    &emsp; &emsp; }<br/>
+                };<br/>
+                int main() <br/>
+                {<br/>
+                    &emsp; Animal ani;<br/>
+                    &emsp; Pig myPig;<br/>
+                    &emsp; Dog myDog;<br/>
+
+                    &emsp; ani.sound();<br/>
+                    &emsp; myPig.sound();<br/>
+                    &emsp; myDog.sound();<br/>
+                    &emsp; return0;<br/>
+                }
+            </p>
+        </article>
+
+        <article id="File_Handling">
+            
+            <h1>File Handling</h1>
+            <p>
+                File handling refers to reading or writing data from files. 
+                C provides some functions that allow us to manipulate data in 
+                the files.
+            </p>
+            
+            <h1>Creating and writing to a text file</h1>
+            <p>
+                #include &l1iostream&gt <br/>
+                #include &ltfstream&gt <br/>
+                using namespace std; <br/>
+            
+                int main()  <br/>
+                { <br/>
+                    &emsp; // Create and open a text file <br/>
+                    &emsp; ofstream MyFile("filename.txt"); <br/>
+
+                    &emsp; // Write to the file <br/>
+                    &emsp; MyFile << "File Handling in C++"; <br/>
+
+                    &emsp; // Close the file <br/>
+                    &emsp; MyFile.close();<br/>
+                }
+            </p>
+            <h1>Reading the file</h1>
+            <p> It allows us to read the file line by line</p>
+
+            <p>  getline() </p>
+            <h1> Opening a File</h1>
+            <p>  
+                It opens a file in the C++ program <br/>
+
+                void open(const char* file_name,ios::openmode mode);<br/>
+                in
+            </p>
+            <h1>Opens the file to read(default for ifstream)</h1>
+
+            <p> 
+                fs.open ("test.txt", std::fstream::in)<br/>
+                out
+            </p>
+            <h1>Opens the file to write(default for ofstream)</h1>
+
+            <p> 
+                fs.open ("test.txt", std::fstream::out)<br/>
+                binary
+            </p>
+            <h1>Opens the file in binary mode</h1>  
+
+            <p> 
+                fs.open ("test.txt", std::fstream::binary)<br/>
+                app
+            </p>
+            <h1>Opens the file and appends all the outputs at the end</h1>
+
+            <p> 
+                fs.open ("test.txt", std::fstream::app)<br/>
+                ate
+            </p>
+            <h1>Opens the file and moves the control to the end of the file</h1>
+
+            <p> 
+                fs.open ("test.txt", std::fstream::ate)<br/>
+                trunc
+            </p>
+            <h1>Removes the data in the existing file</h1>
+            <p>
+                fs.open ("test.txt", std::fstream::trunc)<br/>
+                nocreate
+            </p>
+            <h1>Opens the file only if it already exists</h1>
+            <p>
+                fs.open ("test.txt", std::fstream::nocreate)<br/>
+                noreplace
+            </p>
+            <h1>Opens the file only if it does not already exist</h1>
+
+            <p> fs.open ("test.txt", std::fstream::noreplace)<br/>
+            </p>
+            <h1>Closing a file </h1>
+            <p> 
+                It closes the file<br/>
+
+                myfile.close()<br/>
+            </p>
+        </article>
+
+        <article id="Exception_Handling">
+            
+            <h1>Exception Handling</h1>
+            <p>
+                An exception is an unusual condition that results in an 
+                interruption in the flow of the program.<br/>
+                
+                try and catch block<br/>
+                A basic try-catch block in python. When the try block throws an error, 
+                the control goes to the except block<br/>
+                
+                try {<br/>
+                // code to try<br/>
+                throw exception; // If a problem arises, then throw an exception<br/>
+                }<br/>
+                catch () {<br/>
+                // Block of code to handle errors <br/>
+                } <br/>
+
+                try <br/>
+                {<br/>
+                    &emsp; int age = 10;<br/>
+                    &emsp; if (age >= 20) <br/>
+                    &emsp; {
+                    &emsp;     &emsp; cout << "you are old enough.";<br/>
+                    &emsp; }  <br/>
+                    else  <br/>
+                { <br/>
+                throw 505; <br/>
+                } <br/>
+                } <br/>
+                catch (int num)  <br/>
+                { <br/>
+                    &emsp; cout << "Access denied \n"; <br/>
+                    &emsp; cout << "Error number: " << num; <br/>
+                } <br/>
+            </p>
+        </article>
+
+        <article id="Arrays">
+            <h1>
+                Arrays
+            </h1>
+            <p>
+                int main()  <br/>
+                {   <br/>
+                    &emsp; string str[4] = {"Volvo", "BMW", "Volkswagen", "Ford"}; <br/>
+                    &emsp; for(int i=0;i < 4;i++) <br/>
+                    &emsp; { <br/>
+                    &emsp;     &emsp; cout << str[i]+ " "; <br/>
+                    &emsp; } <br/>
+                    &emsp; return 0; <br/>
+                } <br/>
+            </p>
+        </article>
+
+        <article id="Vectors">
+            <h1>
+                Vectors
+            </h1>
+            <p>
+                #include &ltvector&gt <br/>
+                int main()  <br/>
+                { <br/>
+                     &emsp; vector<int> grade(3); <br/>
+                     &emsp; grade[0] = 90; <br/>
+                     &emsp; grade[1] = 80; <br/>
+                     &emsp; grade[2] = 70; <br/>
+                     &emsp; return 0; <br/>
+                } <br/>
+
+                vector<string> wishlist; <br/>
+                wishlist.push_back("Furniture"); <br/>
+                wishlist.push_back("Basket"); <br/>
+                wishlist.pop_back(); <br/>
+                cout << wishlist.size();  // returns the output 1 <br/>
+                    
+            </p>
+        </article>
+
+        <article id="Structure">
+            <h1>
+                Structure 
+            </h1>
+            <p>
+                Structure allows you to define the data items of the non-similar
+                data types. To use a structure, you must define it and access 
+                its structure members.  <br/>
+
+                The following is the syntax for creating a structure: <br/>
+            </p>
+            <p>
+                struct [structuretag] { <br/>
+                &emsp; member definition; <br/>
+                &emsp; member definition; <br/>
+                &emsp; ... <br/>
+                &emsp; member definition; <br/>
+                } [one or more structure variables]; <br/>
+            </p>
+            <p>
+                For example, we want to create a structure of books consisting 
+                of title, author, subject, and book_id, as follows: <br/>
+            
+                structBooks { <br/>
+                    &emsp;     char title[50]; <br/>
+                    &emsp;     char author[50]; <br/>
+                    &emsp;     char subject[100]; <br/>
+                    &emsp;     int book_id; <br/>
+                } book; <br/>
+            </p>
+            
+            <p> 
+                You must use the member access operator (.) to access structure members. 
+                This is a period between the structure variable name and the structure 
+                member that we wish to access.
+            </p>
+            <h1>Accessing Structure Members</h1>
+                    #include &ltiostream&gt <br/>
+                    #include &ltcstring&gt <br/>
+                    
+                    usingnamespacestd; <br/>
+                    
+                    structBooks { <br/>
+                        &emsp; char title[50]; <br/>
+                        &emsp; char author[50]; <br/>
+                        &emsp; char subject[100]; <br/>
+                        &emsp; int book_id; <br/>
+                    }; <br/>
+                    
+                    int main() <br/>
+                    {
+                        &emsp; structBooksBook1; // Declare Book1 of type Book <br/>
+                        &emsp; structBooksBook2; // Declare Book2 of type Book <br/>
+                        
+                        &emsp; // book 1 specification <br/>
+                        &emsp; strcpy( Book1.title, "Learn C++ Programming"); <br/>
+                        &emsp; strcpy( Book1.author, "Chand Miyan"); <br/>
+                        &emsp; strcpy( Book1.subject, "C++ Programming"); <br/>
+                        &emsp; Book1.book_id = 6495407; <br/>
+                        
+                        &emsp; // book 2 specification <br/>
+                        &emsp; strcpy( Book2.title, "Telecom Billing"); <br/>
+                        &emsp; strcpy( Book2.author, "Yakit Singha"); <br/>
+                        &emsp; strcpy( Book2.subject, "Telecom"); <br/>
+                        &emsp; Book2.book_id = 6495700; <br/>
+                        &emsp; 
+                        &emsp; // Print Book1 info <br/>
+                        &emsp; cout << "Book 1 title : " << Book1.title << endl; <br/>
+                        &emsp; cout << "Book 1 author : " << Book1.author << endl; <br/>
+                        &emsp; cout << "Book 1 subject : " << Book1.subject << endl; <br/>
+                        &emsp; cout << "Book 1 id : " << Book1.book_id << endl; <br/>
+                        &emsp; 
+                        &emsp; // Print Book2 info <br/>
+                        &emsp; cout << "Book 2 title : " << Book2.title << endl; <br/>
+                        &emsp; cout << "Book 2 author : " << Book2.author << endl; <br/>
+                        &emsp; cout << "Book 2 subject : " << Book2.subject << endl; <br/>
+                        &emsp; cout << "Book 2 id : " << Book2.book_id << endl; <br/>
+                       
+                        &emsp; return0; <br/>
+                    }
+            </p>
+        </article>
+
+        <article id="Preprocessor">
+            <h1>
+                Preprocessor
+            </h1>
+            <p>
+                The following are some in-built preprocessors available in C++ for various functionalities. <br/>
+                
+                #include &ltstdio.h&gt // Insert standard header file <br/>
+                
+                #include "myfile.h" // Insert file in current directory <br/>
+                
+                #define X some text // Replace X with some text <br/>
+                
+                #define F(a,b) a+b // Replace F(1,2) with 1+2 <br/>
+                
+                #define X \ <br/>
+                
+                 some text // Multiline definition <br/>
+                
+                #undef X // Remove definition <br/>
+                
+                #if defined(X) // Conditional compilation (#ifdef X) <br/>
+                
+                #else // Optional (#ifndef X or #if !defined(X)) <br/>
+                
+                #endif // Required after #if, #ifdef <br/>
+                 
+            </p>
+        </article>
+
+        <article id="Dynamic_Memory_Management">
+            <h1>
+                Dynamic Memory Management
+            </h1>
+            <p>
+                #include &ltmemory&gt // Include memory (std namespace) <br/>
+                shared_ptr&ltint&gt x; // Empty shared_ptr to a integer on heap. Uses reference counting for cleaning up objects. <br/>
+                x = make_shared&ltint&gt(12); // Allocate value 12 on heap <br/>
+                shared_ptr&ltint&gt y = x; // Copy shared_ptr, implicit changes reference count to 2. <br/>
+                cout << *y; // Dereference y to print '12' <br/>
+                if (y.get() == x.get()) { // Raw pointers (here x == y) <br/>
+                cout << "Same"; <br/>
+                } <br/>
+                y.reset(); // Eliminate one owner of object <br/>
+                if (y.get() != x.get()) { <br/>
+                cout << "Different"; <br/>
+                } <br/>
+                if (y == nullptr) { // Can compare against nullptr (here returns true) <br/>
+                cout << "Empty";<br/>
+                }<br/>
+                y = make_shared&ltint>=&gt(15); // Assign new value <br/>
+                cout << *y; // Dereference x to print '15' <br/>
+                cout << *x; // Dereference x to print '12' <br/>
+                weak_ptr&ltint&gt w; // Create empty weak pointer <br/>
+                w = y; // w has weak reference to y. <br/>
+                if (shared_ptr&ltint&gt s = w.lock()) { // Has to be copied into a shared_ptr before usage <br/>
+                cout << *s; <br/>
+                } <br/>
+                unique_ptr&ltint&gt z; // Create empty unique pointers <br/>
+                unique_ptr&ltint&gt q; <br/>
+                z = make_unique&ltint&gt(16); // Allocate int (16) on heap. Only one reference allowed. <br/>
+                q = move(z); // Move reference from z to q. <br/>
+                if (z == nullptr){ <br/>
+                cout << "Z null"; <br/>
+                } <br/>
+                cout << *q; <br/>
+                shared_ptr&ltB&gt r; <br/>
+                r = dynamic_pointer_cast&ltB&gt(t); // Converts t to a shared_ptr&ltB&gt <br/>
+            </p>
+        </article>
+
+        <article id="Floating_Point_Math">
+            <h1>
+                Floating Point Math
+            </h1>
+            <p>
+                You must include the “cmath” library to perform tasks on floating-point numbers.<br/>
+
+                #include &ltcmath&gt // Include cmath (std namespace) <br/>
+
+                sin(x); cos(x); tan(x); // you can perform Trig functions, x (double) is in radians <br/>
+
+                asin(x); acos(x); atan(x); // Inverses <br/>
+
+                atan2(y, x); // atan(y/x) <br/>
+
+                sinh(x); cosh(x); tanh(x); // Hyperbolic sin, cos, tan functions <br/>
+
+                exp(x); log(x); log10(x); // e to the x, log base e, log base 10 <br/>
+
+                pow(x, y); sqrt(x); // x to the y, square root <br/>
+
+                ceil(x); floor(x); // Round up or down (as a double) <br/>
+
+                fabs(x); fmod(x, y); // Absolute value, x mod y <br/>
+            </p>
+        </article>
+
+        <artcile id="Template">
+            <h1>
+                Template
+            </h1>
+            <p>
+                Instantiate a Template<br/>
+                #include &ltiostream&gt<br/>
+
+                struct A {};<br/>
+                struct B {};<br/>
+
+                template &lttypename T, typename U&gt<br/>
+                struct Foo {<br/>
+                Foo(T t, U u) : t_(t), u_(u) {}<br/>
+
+                T t_;<br/>
+                U u_;<br/>
+                };<br/>
+
+                template &lttypename F, typename T, typename U&gt<br/>
+                struct Bar {<br/>
+                Bar(T t, U u) : f_(t, u) {}<br/>
+
+                F f_;<br/>
+                };<br/>
+
+                // instantiate template Foo<br/>
+                template class Foo&ltA, B&gt;<br/>
+
+                int main() {<br/>
+                Bar&ltFoo&ltA, B&gt, A, B&gt(A(), B());<br/>
+                return 0;<br/>
+                }
+            </p>
+
+            <h1>
+                Template Specialization
+            </h1>
+            <p>
+                #include &ltiostream&gt<br/>
+
+                template &lttypename T, typename U&gt<br/>
+                class Base<br/>
+                {<br/>
+                &emsp; private:<br/>
+                &emsp; &emsp; T m_a;<br/>
+                &emsp; &emsp; U m_b;<br/>
+
+                &emsp; public:<br/>
+ 
+                &emsp; &emsp; Base(T a, U b) : m_a(a), m_b(b) {};<br/>
+
+                &emsp; &emsp; T foo() { return m_a; }<br/>
+                &emsp; &emsp; U bar() { return m_b; }<br/>
+                };<br/>
+            </p>
+
+            <h1>// partial specialization</h1>
+            <p>
+                template&lttypename T&gt<br/>
+                class Base &ltT, int&gt<br/>
+                {<br/>
+                    &emsp; private:<br/>
+                    &emsp; &emsp; T m_a;<br/>
+                    &emsp; &emsp; int m_b;<br/>
+                    &emsp; public:<br/>
+                &emsp; &emsp; Base(T a, int b) : m_a(a), m_b(b) {}<br/>
+                &emsp; &emsp; T foo() { return m_a; }<br/>
+                &emsp; &emsp; int bar() { return m_b; }<br/>
+                };<br/>
+            </p>
+            <h1> // full specialization </h1>
+            <p>
+                template&lt&gt<br/>
+                class Base &ltdouble, double&gt<br/>
+                {<br/>
+                    &emsp; private:<br/>
+                    &emsp; &emsp; double d_a;<br/>
+                    &emsp; &emsp; double d_b;<br/>
+                    &emsp; public:<br/>
+                    &emsp; &emsp; Base(double a, double b) : d_a(a), d_b(b) {}<br/>
+                    &emsp; &emsp; double foo() { return d_a; }<br/>
+                    &emsp; &emsp; double bar() { return d_b; }<br/>
+                };<br/>
+
+
+                int main (int argc, char *argv[])<br/>
+                {<br/>
+                    &emsp; Base&ltfloat, int&gt foo(3.33, 1);<br/>
+                    &emsp; Base&ltdouble, double&gt bar(55.66, 95.27);<br/>
+                    &emsp; std::cout << foo.foo() << std::endl;<br/>
+                    &emsp; std::cout << foo.bar() << std::endl;<br/>
+                    &emsp; std::cout << bar.foo() << std::endl;<br/>
+                    &emsp; std::cout << bar.bar() << std::endl;<br/>
+                    &emsp; return 0;<br/>
+                }<br/>
+            </p>
+
+            
+            <h1>Class Template</h1>
+            <p>
+                #include &ltiostream&gt<br/>
+
+                template &lttypename T&gt<br/>
+                class Area<br/>
+                {<br/>
+                    &emsp; protected:<br/>
+                    &emsp; &emsp; T w;<br/>
+                    &emsp; &emsp; T h;<br/>
+                    &emsp; public:<br/>
+                    &emsp; &emsp; Area(T a, T b) : w(a), h(b) {}<br/>
+                    &emsp; &emsp; T get() { return w * h; }<br/>
+                };<br/>
+
+                class Rectangle : public Area&ltint&gt<br/>
+                {<br/>
+                    &emsp; public:<br/>
+                    &emsp; Rectangle(int a, int b) : Area&ltint&gt(a, b) {}<br/>
+                };<br/>
+
+                template &lttypename T&gt<br/>
+                class GenericRectangle : public Area&ltT&gt<br/>
+                {<br/>
+                    &emsp; public: <br/>
+                    &emsp; GenericRectangle(T a, T b) : Area&ltT&gt(a, b){} <br/>
+                }; <br/>
+
+
+                int main (int argc, char *argv[]) <br/>
+                { <br/>
+                    &emsp; Rectangle r(2, 5); <br/>
+                    &emsp; GenericRectangle&ltdouble&gt g1(2.5, 3.); <br/>
+                    &emsp; GenericRectangle&ltint&gt g2(2, 3); <br/>
+
+                    &emsp; std::cout << r.get() << std::endl; <br/>
+                    &emsp; std::cout << g1.get() << std::endl; <br/>
+                    &emsp; std::cout << g2.get() << std::endl; <br/>
+                    &emsp; return 0; <br/>
+                }
+            </p>
+
+            
+            <h1>Variadic Template (Parameter Pack)</h1>
+            <p>
+                #include &ltiostream&gt <br/>
+                #include &ltutility&gt <br/>
+                #include &ltvector&gt <br/>
+
+                template &lttypename T&gt <br/>
+                class Vector { <br/>
+                    &emsp; protected: <br/>
+                    &emsp; &emsp; std::vector&ltT&gt v; <br/>
+                    &emsp; public: <br/>
+
+                    &emsp; &emsp; template&lttypename ...Args&gt <br/>
+                    &emsp; &emsp; Vector(Args&&... args) { <br/>
+                    &emsp; &emsp; (v.emplace_back(std::forward&ltArgs&gt(args)), ...);<br/>
+                }<br/>
+
+                using iterator = typename std::vector&ltT&gt::iterator;<br/>
+                iterator begin() noexcept { return v.begin(); }<br/>
+                iterator end() noexcept { return v.end(); }<br/>
+                };<br/>
+
+
+                int main(int argc, char *argv[]) {<br/>
+
+                    &emsp; Vector&ltint&gt v{1,2,3};<br/>
+                    &emsp; for (const auto &x : v)<br/>
+                    &emsp; {
+                        &emsp; std::cout << x << "\n";<br/>
+                        &emsp; }<br/>
+                }<br/>
+            </p>
+
+            
+            <h1>Fold expressions</h1>
+
+            <p>
+                // g++ -std=c++17 -Wall -Werror -O3 a.cc<br/>
+
+                #include &ltiostream&gt<br/>
+                #include &ltutility&gt<br/>
+
+                template &lttypename ...Args&gt<br/>
+                decltype(auto) f(Args&& ...args) {<br/>
+                auto l = [](auto &&x) { return x * 2; };<br/>
+                return (l(std::forward&ltArgs&gt(args)) + ...);<br/>
+                } <br/>
+
+                int main(int argc, char *argv[]) { <br/>
+                std::cout << f(1, 2, 3, 4, 5) << std::endl; <br/>
+                }
+            </p>
+
+            
+            <h1>Limit a Template Types</h1>
+
+            <p>
+                #include &ltiostream&gt<br/>
+                #include &ltstring&gt<br/>
+                #include &lttype_traits&gt<br/>
+
+                template&lttypename S,<br/>
+                typename = typename std::enable_if&lt<br/>
+                    std::is_same&lt<br/>
+                    std::string,<br/>
+                    typename std::decay&ltS&gt::type<br/>
+                    >::value<br/>
+                &gt::type<br/>
+                &gt<br/>
+                void Foo(S s) {<br/>
+                std::cout << s << "\n";<br/>
+                }<br/>
+
+
+                int main(int argc, char *argv[]) {<br/>
+                std::string s1 = "Foo";<br/>
+                const std::string s2 = "Bar";<br/>
+                Foo(s1);<br/>
+                Foo(s2);<br/>
+
+                // Foo(123);    compile error<br/>
+                // Foo("Baz");  compile error<br/>
+                }<br/>
+            </p>
+
+            
+            <h1>Specialize Types</h1>
+            <q>
+                #include &ltiostream&gt <br/>
+                #include &ltstring&gt <br/>
+                #include &lttype_traits&g <br/>t
+
+                template&lttypename S&gt <br/>
+                void Foo(S s) { <br/>
+                if (std::is_integral&ltS&gt::value) { <br/>
+                    std::cout << "do a task for integer..." << "\n"; <br/>
+                    return; <br/>
+                }<br/>
+                if (std::is_same&ltstd::string, typename std::decay&lts&gt::type&gt::value)<br/>
+                { <br/>
+                    std::cout << "do a task for string..." << "\n";
+                    return;<br/>
+                }<br/>
+                }<br/>
+
+                int main(int argc, char *argv[]) {<br/>
+                std::string s1 = "Foo";<br/>
+                Foo(s1);<br/>
+                Foo(123);<br/>
+                }<br/>
+                Template Specialization approach<br/>
+
+                #include &ltiostream&gt<br/>
+                #include &ltstring&gt<br/>
+                #include &lttype_traits&gt<br/>
+
+                template&lttypename S&gt<br/>
+                void Foo(S s) {}<br/>
+                
+                template &lt&gt<br/>
+                void Foo&ltint&gt(int s) {<br/>
+                std::cout << "do a task for integer..." << "\n";<br/>
+                }<br/>
+                template &lt&gt<br/>
+                void Foo&ltstd::string&gt(std::string s) {<br/>
+                std::cout << "do a task for string..." << "\n";<br/>
+                }<br/>
+
+
+                int main(int argc, char *argv[]) {<br/>
+                std::string s1 = "Foo";<br/>
+                Foo(s1);<br/>
+                Foo(123);<br/>
+                }<br/>
+
+            </q>
+
+        
+            <h1>Curiously recurring template pattern</h1>
+            <p>
+                #include &ltiostream&gt<br/>
+
+                // Curiously Recurring Template Pattern (CRTP)<br/>
+
+                template &lttypename D&gt<br/>
+                class Base<br/>
+                {<br/>
+                &emsp; public:<br/>
+                &emsp; &emsp; oid interface() {<br/>
+                &emsp;     &emsp; &emsp; static_cast&ltD *>(this)->implement();<br/>
+                &emsp; }<br/>
+
+                static void static_interface() {<br/>
+                    D::static_interface();<br/>
+                }<br/>
+
+                void implement() {<br/>
+                    std::cout << "Base" << std::endl;<br/>
+                }<br/>
+                };<br/>
+
+                class DerivedFoo : public Base&ltDerivedFoo&gt<br/>
+                {<br/>
+                &emsp; public:<br/>
+                &emsp; &emsp; void implement() {<br/>
+                &emsp;     &emsp; std::cout << "Foo" << std::endl;<br/>
+                &emsp; }<br/>
+                &emsp; static void static_interface() {<br/>
+                &emsp;     &emsp; std::cout << "Static Foo" << std::endl;<br/>
+                &emsp; }<br/>
+                };<br/>
+
+                class DerivedBar : public Base&ltDerivedBar&gt {};<br/>
+
+                int main (int argc, char *argv[])<br/>
+                {<br/>
+                &emsp; DerivedFoo foo;<br/>
+                &emsp; DerivedBar bar;<br/>
+
+                &emsp; foo.interface();<br/>
+                &emsp; foo.static_interface();<br/>
+                &emsp; bar.interface();<br/>
+
+                &emsp; return 0;<br/>
+                }<br/>
+            </p>
+
+        
+            <h1>Parametric Expressions</h1>
+            <p>
+                #include &ltiostream&gt<br/>
+
+                // g++ -std=c++17 -fconcepts -g -O3 a.cpp<br/>
+
+                decltype(auto) min(auto&& lhs, auto&& rhs) {<br/>
+                    &emsp; return lhs < rhs ? lhs : rhs;<br/>
+                }<br/>
+
+                int main(int argc, char *argv[]) {<br/>
+                &emsp; std::cout << min(1, 2) << "\n";<br/>
+                &emsp; std::cout << min(3.14, 2.718) << "\n";<br/>
+                }<br/>
+                #include &ltiostream&gt<br/>
+
+                template&lttypename T&gt<br/>
+                decltype(auto) min(T&& lhs,T&& rhs) {<br/>
+                    &emsp; return lhs < rhs ? lhs : rhs;<br/>
+                }<br/>
+
+                int main(int argc, char *argv[]) {<br/>
+                &emsp; std::cout << min(1, 2) << "\n";<br/>
+                &emsp; std::cout << min(3.14, 2.718) << "\n";
+                }<br/>
+                #include &ltiostream&gt<br/>
+
+                auto min = [](auto&& lhs, auto&& rhs) {<br/>
+                    &emsp; return lhs < rhs ? lhs : rhs;<br/>
+                };<br/>
+
+                int main(int argc, char *argv[]) {<br/>
+                &emsp; std::cout << min(1, 2) << "\n";<br/>
+                &emsp; std::cout << min(3.14, 2.718) << "\n";<br/>
+                }
+            </p>
+            <a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p1221r0.html">Parametric Expressions</a>
+            
+            
+            <h1>Template Template Parameters</h1>
+            <p>
+                #include &ltvector&gt<br/>
+                #include &ltdeque&gt<br/>
+
+                template &lttemplate&ltclass, class&gt class V, class T, class A&gt<br/>
+                void f(V&ltT, A&gt &v) {<br/>
+                v.pop_back();<br/>
+                }<br/>
+
+                int main(int argc, char *argv[]) {<br/>
+                &emsp; std::vector&ltint&gt v{0};<br/>
+                &emsp; std::deque&ltint&gt q{1};<br/>
+                &emsp; f&ltstd::vector, int&gt(v);<br/>
+                &emsp; f&ltstd::deque, int&gt(q);<br/>
+                }
+            </p>
+        
+            <h1>Access Protected Membors in Sub-Template</h1>
+            <p> Accessing protected members by pulling the names into the current
+                scope via using.<br/>
+
+                #include &ltiostream>&gt<br/>
+
+                template &lttypename T&gt<br/>
+                class A {
+                &emsp; public:<br/>
+                &emsp; &emsp; A(T p) : p_{p} {}<br/>
+                &emsp; &emsp; decltype(auto) f() { std::cout << p_ << "\n"; }<br/>
+                &emsp; protected:<br/>
+                &emsp; &emsp; T p_;<br/>
+                };<br/>
+
+                template &lttypename T&gt<br/>
+                class B : A&ltT&gt {<br/>
+                using A&ltT&gt::p_;<br/>
+                &emsp; public:<br/>
+                &emsp; &emsp; B(T p) : A&ltT&gt(p) {}<br/>
+                &emsp; &emsp; decltype(auto) g() { std::cout << p_ << "\n"; }<br/>
+                };<br/>
+
+                int main(int argc, char *argv[]) {<br/>
+                &emsp; A&ltint&gt a(0);<br/>
+                &emsp; B&ltint&gt b(0);<br/>
+                &emsp; a.f();<br/>
+                &emsp; b.g();<br/>
+                }<br/>
+
+            <h1>Another option is qualifying name via the this pointer.</h1>
+            <p>
+                #include &ltiostream&gt<br/>
+
+                template &lttypename T&gt<br/>
+                class A {<br/>
+                &emsp; public:<br/>
+                &emsp; &emsp; A(T p) : p_{p} {}<br/>
+                &emsp; &emsp; decltype(auto) f() { std::cout << p_ << "\n"; }<br/>
+                &emsp; protected:<br/>
+                &emsp; &emsp; T p_;<br/>
+                };<br/>
+                
+                template &lttypename T&gt<br/>
+                class B : A&ltT&gt {<br/>
+                &emsp; public:<br/>
+                &emsp; &emsp; B(T p) : A&ltT&gt{p} {}<br/>
+                &emsp; &emsp; decltype(auto) g() { std::cout << this->p_ << "\n"; }<br/>
+                };<br/>
+
+                int main(int argc, char *argv[]) {<br/>
+                &emsp; A&ltint&gt a(0);<br/>
+                &emsp; B&ltint&gt b(0);<br/>
+                &emsp; a.f();<br/>
+                &emsp; b.g();<br/>
+                }<br/>
+            </p>
+        </artcile>
+
+        <article id="Data_Structure">
+            <h1>Data Structure & Algorithm</h1>
+            <p>
+                Remove elements by conditions<br/>
+                #include &ltvector&gt<br/>
+
+                int main(int argc, char *argv[])<br/>
+                {<br/>
+                &emsp; std::vector&ltint&gt v{1, 2, 3, 4, 5, 6};<br/>
+                &emsp; for (auto it = v.begin(); it != v.end();) {<br/>
+                &emsp;     &emsp; if (*it > 3) {<br/>
+                &emsp;     &emsp; &emsp; it = v.erase(it);<br/>
+                &emsp;     } else {<br/>
+                &emsp;     ++it;<br/>
+                &emsp;     }<br/>
+                }<br/>
+                }<br/>
+            </p>
+
+            <p>
+                Remove keys by conditions<br/>
+                #include &ltstring&gt<br/>
+                #include &ltmap&gt<br/>
+
+                int main(int argc, char *argv[])<br/>
+                {<br/>
+                &emsp; std::map&ltint, std::string&gt m{{1, "1"}, {2, "2"}, {3, "3"}};<br/>
+                &emsp; for (auto it = m.begin(); it != m.end();) {<br/>
+                &emsp;     &emsp; if (it->first > 1) {<br/>
+                &emsp;     &emsp; &emsp; it = m.erase(it);<br/>
+                &emsp;     } else {<br/>
+                &emsp;     &emsp; &emsp; ++it;<br/>
+                &emsp;     }<br/>
+                }<br/>
+                }<br/>
+
+            </p>
+
+            
+            <h1>std::map sort by key</h1>
+             <p>// g++ -std=c++17 -Wall -Werror -O3 a.cc
+                
+                #include &ltiostream&gt<br/>
+                #include &ltmap&gt<br/>
+                
+                int main(int argc, char *argv[])<br/>
+                {<br/>
+                 &emsp;  // ascending<br/>
+                 &emsp;  std::map&ltint, int, std::less&ltint&gt&gt a{{3, 3}, {2, 2}, {1, 1}};<br/>
+                 &emsp;  // descending<br/>
+                 &emsp;  std::map&ltint, int, std::greater&ltint&gt&gt d{{3, 3}, {2, 2}, {1, 1}};<br/>
+
+                 &emsp;  auto print = [](auto &m) {<br/>
+                 &emsp;    for (const auto &[k, v] : m) { <br/>
+                 &emsp;      &emsp; std::cout << k << " " << v << "\n"; <br/>
+                 &emsp;    }<br/>
+                 &emsp;  };<br/>
+                 print(a); // 1, 2, 3 <br/>
+                 print(d); // 3, 2, 1 <br/>
+                } 
+            </p>
+
+            
+            <h1>std::map with object as key</h1>
+            <p>
+                #include &ltiostream&gt<br/>
+                #include &ltmap&gt<br/>
+
+                struct Data {<br/>
+                    &emsp; int a;<br/>
+                    &emsp; int b;<br/>
+                };<br/>
+
+                int main(int argc, char *argv[])<br/>
+                {<br/>
+                    &emsp; auto cmp = [](auto &x, auto &y) { return x.a < y.b; };<br/>
+                    &emsp; std::map&ltData, int, decltype(cmp)&gt m{cmp};<br/>
+                    &emsp; m[Data{1, 2}] = 1;<br/>
+                    &emsp; m[Data{3, 4}] = 4;<br/>
+
+                    &emsp; for (const auto &[k, v] : m) {<br/>
+                    &emsp;     std::cout << k.a << " " << k.b << " " << v << "\n";<br/>
+                    &emsp; }<br/>
+                }<br/>
+            </p>
+
+            
+            <h1>>std::foreach</h1>
+            <p>
+                #include &ltiostream&gt<br/>
+                #include &ltvector&gt<br/>
+                #include &ltalgorithm&gt<br/>
+
+                int main(int argc, char *argv[])<br/>
+                {<br/>
+                    &emsp; std::vector v{1, 2, 3};<br/>
+                    &emsp; std::for_each(v.begin(), v.end(), [](auto &i) { i = i * 2; });<br/>
+                    &emsp; std::for_each(v.begin(), v.end(), [](auto &i) { std::cout << i << "\n"; });<br/>
+                }
+            </p>
+
+            
+            <h1>std::find<br/>
+                std::find returns an iterator to the first element in an array like object.
+            </h1>
+            <p>
+                #include &ltiostream&gt<br/>
+                #include &ltvector&gt<br/>
+                #include &ltalgorithm&gt<br/>
+
+                int main(int argc, char *argv[])<br/>
+                {<br/>
+                    &emsp; std::vector v{1, 2, 3};<br/>
+                    
+                    &emsp; // complexity O(n)<br/>
+                    &emsp; auto it = std::find(v.begin(), v.end(), 2);<br/>
+                    &emsp; std::cout << *it << "\n";<br/>
+                }<br/>
+            </p>
+
+            
+            <h1> std::find_if & std::find_if_not</h1>
+            <p>
+                #include &ltiostream&gt<br/>
+                #include &ltvector&gt<br/>
+                #include &ltalgorithm&gt <br/>
+
+                int main(int argc, char *argv[]) <br/>
+                {<br/>
+                    &emsp; std::vector v{1, 2, 3};<br/>
+                    &emsp; auto x = find_if(v.begin(), v.end(), [](auto &i) { return i == 2; });<br/>
+                    &emsp; std::cout << *x << "\n";<br/>
+
+                    &emsp; auto y = find_if_not(v.begin(), v.end(), [](auto &i) { return i == 2; });<br/>
+                    &emsp; std::cout << *y << "\n";<br/>
+                }
+
+            </p>
+
+            
+            <h1>std::transform </h1>
+            <p>
+                #include &ltiostream&gt<br/>
+                #include &ltvector&gt<br/>
+                #include &ltalgorithm&gt<br/>
+
+                int main(int argc, char *argv[])<br/>
+                {<br/>
+                    &emsp; std::string s = "Hello World";<br/>
+
+                    &emsp; // transform elements in place<br/>
+                    &emsp; std::transform(s.begin(), s.end(), s.begin(), ::toupper);<br/>
+                    &emsp; std::cout << s << "\n";<br/>
+
+                    &emsp; // transform elements and store in another object<br/>
+                    &emsp; std::string o(s.size(), 0);<br/>
+                    &emsp; std::transform(s.begin(), s.end(), o.begin(), ::tolower);<br/>
+                    &emsp; std::cout << o << "\n";<br/>
+                }<br/>
+            </p>
+
+            
+            <h1>std::generate</h1>
+            <p>
+                #include &ltiostream&gt<br/>
+                #include &ltrandom&gt<br/>
+                #include &ltvector&gt<br/>
+                #include &ltalgorithm&gt<br/>
+
+                int main(int argc, char *argv[])<br/>
+                {<br/>
+                    &emsp; std::random_device dev;<br/>
+                    &emsp; std::mt19937 rng(dev());<br/>
+                    &emsp; std::uniform_int_distribution&ltstd::mt19937::result_type&gt dist(1,10);<br/>
+            </p>
+            <h1>    // generate a sequence </h1>
+            <p>
+                    &emsp; std::vector&ltint&gt v(5);<br/>
+                    &emsp; std::generate(v.begin(), v.end(), [&] { return dist(rng); });<br/>
+                    &emsp; for (const auto &i : v) {<br/>
+                    &emsp;     std::cout << i << std::endl;<br/>
+                }<br/>
+                }<br/>
+            </p>
+        </article>
+
+        <article id="coroutine">
+            <h1>
+                coroutine
+            </h1>
+            <h2>
+                Generator
+            </h2>
+            <p>
+                // g++ -O3 -std=c++20 -Wall -Werror co.cc<br/>
+
+                #include &ltiostream&gt<br/>
+                #include &ltcoroutine&gt<br/>
+
+                template &lttypename T&gt<br/>
+                class generator {<br/>
+                    &emsp; public:<br/>
+                &emsp; struct promise_type;<br/>
+                &emsp; using handle_type = std::coroutine_handle&ltpromise_type&gt;<br/>
+                &emsp; handle_type h_;<br/>
+ 
+                &emsp; struct promise_type {<br/>
+                &emsp;     &emsp; T value_;<br/>
+                &emsp;     &emsp; std::exception_ptr exception_;<br/>
+                &emsp;     &emsp; generator<T> get_return_object() {<br/>
+                &emsp;     &emsp; &emsp; return { handle_type::from_promise(*this) };<br/>
+                &emsp;     &emsp; }<br/>
+                &emsp;     &emsp; void unhandled_exception() { exception_ = std::current_exception(); }<br/>
+                &emsp;     &emsp; void return_void() {}<br/>
+                &emsp;     &emsp; std::suspend_always initial_suspend() noexcept { return {}; }<br/>
+                &emsp;     &emsp; std::suspend_always final_suspend() noexcept { return {}; }<br/>
+                &emsp;     &emsp; std::suspend_always yield_value(T v) noexcept {<br/>
+                &emsp;     &emsp; value_ = std::move(v);<br/>
+                &emsp;     &emsp; return {};<br/>
+                &emsp;     }<br/>
+                };<br/>
+
+                public:<br/>
+
+                generator(handle_type h) : h_(h) {}<br/>
+                ~generator() { h_.destroy(); }<br/>
+                explicit operator bool() {<br/>
+                    &emsp; next();<br/>
+                    &emsp; return !h_.done();<br/>
+                }<br/>
+
+                T operator() () {<br/>
+                    &emsp; next();<br/>
+                    &emsp; cached_ = false;<br/>
+                    &emsp; return std::move(h_.promise().value_);<br/>
+                }<br/>
+
+                private:<br/>
+                bool cached_ = false;<br/>
+                void next() {<br/>
+                    if (cached_) {<br/>
+                        &emsp; return;<br/>
+                    }<br/>
+                    h_();<br/>
+                    if (h_.promise().exception_) {<br/>
+                        &emsp; std::rethrow_exception(h_.promise().exception_);<br/>
+                    }<br/>
+                    cached_ = true;<br/>
+                }<br/>
+                };<br/>
+
+                generator&ltuint64_t&gt fib(uint64_t n) {<br/>
+                &emsp; uint64_t a = 0, b = 1;<br/>
+                &emsp; for (uint64_t i = 0; i <= n; ++i) {<br/>
+                &emsp;     &emsp; co_yield a;<br/>
+                &emsp;     &emsp; uint64_t t = b;<br/>
+                &emsp;     &emsp; b = a + b;<br/>
+                &emsp;     &emsp; a = t;<br/>
+                }<br/>
+                } <br/>
+
+                int main(int argc, char *argv[]) {<br/>
+                &emsp; auto g = fib(10); <br/>
+                &emsp; while (g) { <br/>
+                &emsp;     &emsp; std::cout << g() << " "; <br/>
+                &emsp; } <br/>
+                &emsp; // ./a.out <br/>
+                &emsp; //  0 1 1 2 3 5 8 13 21 34 55 <br/>
+                } <br/>
+            </p>
+        </article>
+
+        <article id="Lnk_List">
+            <h1>Link list</h1>
+
+            <p>
+                    #include &ltiostream&gt <br/>
+                    using namespace std; <br/>
+                    
+                    struct node <br/>
+                    { <br/>
+                        &emsp; int data;   // data of the node <br/>
+                        &emsp; node *next; // pointer to the next node <br/>
+                    }; <br/>
+                    
+                    node *head = NULL; // head is the pointer to the first node <br/>
+                    
+                    void insertNode(int value) <br/>
+                    { <br/>
+                        &emsp; node *newNode, *last;  // newNode is the new node to be inserted and last is the last node of the list <br/>
+                        &emsp; newNode = new node;    // newNode is creating a new node <br/>
+                        &emsp; newNode->data = value; // newNode's data is set to the value passed to the function <br/>
+                        &emsp; newNode->next = NULL;  // newNode's next is set to NULL <br/>
+                    
+                        &emsp; if (head == NULL) // if the head (the pointer to the first node)is NULL <br/>
+                        &emsp; { <br/>
+                        &emsp;     &emsp; head = newNode;       // head is set to newNode <br/>
+                        &emsp;     &emsp; newNode->next = NULL; // newNode's next is set to NULL to indicate that it is the last node <br/>
+                        &emsp; } <br/>
+                        &emsp; else <br/>
+                        &emsp; { <br/>
+                        &emsp;     &emsp; last = head;               // last is set to the head to start the search from the first node <br/>
+                        &emsp;     &emsp; while (last->next != NULL) // while last's next is not NULL <br/>
+                        &emsp;     &emsp; { <br/>
+                        &emsp;         &emsp; last->next; // last is set to the next node <br/>
+                        &emsp;     &emsp; } <br/>
+                        &emsp;     last->next = newNode; // last's next is set to newNode by pointing it to the new node <br/>
+                        &emsp;     newNode->next = NULL; // newNode's next is set to NULL to indicate that it is the last node <br/>
+                        &emsp; } <br/>
+                    } <br/>
+                    
+                    int main() <br/>
+                    { <br/>
+                        &emsp; insertNode(5);  // inserting the first node <br/>
+                        &emsp; insertNode(6);  // inserting the second node <br/>
+                        &emsp; insertNode(7);  // inserting the third node <br/>
+                        &emsp; insertNode(8);  // inserting the fourth node <br/>
+                        &emsp; insertNode(9);  // inserting the fifth node <br/>
+                        &emsp; insertNode(10); // inserting the last node <br/>
+                        &emsp; return 0; <br/>
+                    } 
+            </p>
+        </article>
+
+    </main>
+
+    <section>
+        <a href="https://cppcheatsheet.com/">cppcheatsheet</a> <br/>
+         <a href="https://hackr.io/blog/cpp-cheat-sheet-pdf">Cheat Sheet</a> <br/>
+         <a href="https://hackingcpp.com/cpp/cheat_sheets.html">Cheat Sheets & Infographics</a> <br/>
+     </section>
+
+  <aside>
+        
+            <a href="#Hello World">Basic Syntax</a>                                 
+            <a href="cout">Console Output</a>                                   
+            <a href="cin">Console Input</a>
+            <a href="DataTypes">Data Types</a>
+            <a href="Casting">Casting</a>
+            <a href="Const Casting">Constant Casting</a>
+            <a href="Reinterpret Casting">Reinterpret Casting</a>
+            <a href="Static Casting">Static Casting</a>
+            <a href="Dynamic Casting">Dynamic Casting</a>
+            <a href="Escape Sequences">Escape Sequences</a>
+            <a href="Comments">Comments</a>
+            <a href="Strings">Strings</a>
+            <a href="Math Library">Math Library</a>
+            <a href="Decision Making">Decision Making</a>
+            <a href="While Loop">While Loop</a>
+            <a href="References">References</a>
+            <a href="Pointers">Pointers</a>
+            <a href="Smart Pointers">Smart Pointers</a>
+            <a href="Make_shared">Make_Shared</a>
+            <a href="Time">Time</a>
+            <a href="Functions_Recursion">Functions and Recursion</a>
+            <a href="OOP">OOP</a>
+            <a href="File_Handling">File Handling</a>
+            <a href="Exception_Handling">Exception Handling</a>
+            <a href="Arrays">Arrays</a>
+            <a href="Vectors">Vectors</a>
+            <a href="Structure">Structure</a>
+            <a href="Preprocessor">Preprocessor</a>
+            <a href="Dynamic_Memory_Management">Dynamic Memory Management</a>
+            <a href="Floating_Point_Math">Floating Point Math</a>
+            <a href="Template">Template</a>
+            <a href="Data_Structure">Data Structure</a>
+            <a href="coroutine">Coroutine</a>
+            <a href="Link_List">Link List</a>
+     
+    </aside>
+
+  <footer>
+         <p>&copy; Tim's Knowledge Base</p>
+         <address>
+             Contact <a href="mailto:tjohnson082083@gmail.com">me</a>
+     </address>
+ </footer>

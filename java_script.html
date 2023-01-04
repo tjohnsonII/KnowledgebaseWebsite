@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Java Script Cheat Sheet</title>
+        <meta name="description" content="Roughly 155 characters">
+
+        <link rel="stylesheet" type="text/css" href="style/style.css">
+
+        <script
+            src="script.js"></script>
+        <script src="script.js"></script>
+    </head>
+
+    <header>
+        <div class="top_of_page">HTML</div>
+            <nav class="nav">
+                <ul class="ulList">
+                    <li><a href="index.html">Home</a>
+                        <li><a href="java_script.html">JavaScript Programming Page</a>
+                        <li><a href="java.html">Java Programming Page</a>
+                        <li><a href="cpp.html">Cpp Programming Page</a>
+                        <li><a href="csharp.html">C# Programming Page</a>
+                        <li><a href="r.html">R Programming Page</a>	
+                        <li><a href="c.html">C Programming Page</a>
+                        <li><a href="python.html">Python Programming Page</a>
+                        <li><a href="batch_scripting.html">Batch Scripting Page</a>
+                        <li><a href="bash_scripting.html">Bash Scripting Page</a>
+                        <li><a href="sql.html">SQL Page</a>
+                        <li><a href="assembly.html">Assembly Language Page</a>
+                        <li><a href="powershell.html">Powershell</a></li>
+                        <li><a href="ccna.html">ccna</a></li>
+                </ul>
+            </nav>
+        </div>    
+    </header>
+
+            
+    <main role="main">
+        <article>
+            <h2>Basics</h2>
+                <h1>On page script call</h1>
+                    <p> script type = "text/javascript" .... /script </p>
+                    
+                <h1> script scr="filename.js" /script </h1>
+                    <p>Include external JS file </p>
+                <h1>Delay - 1 second timeout</h1>
+                    <p>setTimout (function () {},100);</p>
+                <h1>Functions</h1>
+                    <p>function addNumbers(a,b){return a + b;} x = addNumbers(1,2);</p>
+                <h1>Edit DOM elemt</h1>
+                    <p>document.getElementById("Demo_EditDomElemnt").innerHTML = "Hello World!";
+                    </p>
+                    <p id="Demo_EditDomElemnt"></p>
+                <h1>Output</h1>
+                    <p>console.log(a)  // write to the browser console</p> 
+                    <p>document.write(a) // write to the HTML</p> 
+                    <p>alert(a) // output in an alert box</p> 
+                    <p>confirm("Really"); // yes/no dialog, returns true/false depending on user click</p> 
+                    <p>prompt ("Your age?","0"); // input dialog. Second argument is the initial value</p> 
+                <h1>Comments</h1>
+        </article>
+        <article>
+            <h2>Loops</h2>
+            <p>
+                for (var i = 0; i < 10; i++) {
+                document.write(i + ": " + i*3 + "<br />");
+                }<br />
+                var sum = 0; <br />
+                for (var i = 0; i < a.length; i++) {
+                sum + = a[i];<br />
+                }               // parsing an array<br />
+                html = "";<br />
+                for (var i of custOrder) {<br />
+                html += "<li>" + i + "</li>";<br />
+                }
+            </p>
+            <p>
+                var i = 1;                      // initialize<br />
+                while (i < 100) {               // enters the cycle if statement is true<br />
+                i *= 2;                     // increment to avoid infinite loop<br />
+                document.write(i + ", ");   // output<br />
+                }<br />
+            </p>
+            <p>
+                var i = 1;                      // initialize<br />
+                do {                            // enters cycle at least once<br />
+                i *= 2;                     // increment to avoid infinite loop<br />
+                document.write(i + ", ");   // output<br />
+                } while (i < 100)               // repeats cycle if statement is true at the end<br />
+
+            </p>
+            <p>
+                for (var i = 0; i < 10; i++) {<br />
+                    if (i == 5) { break; }          // stops and exits the cycle<br />
+                    document.write(i + ", ");       // last output number is 4<br />
+                    }<br />
+            </p>
+            <p>
+                for (var i = 0; i < 10; i++) {<br />
+                    if (i == 5) { continue; }       // skips the rest of the cycle<br />
+                    document.write(i + ", ");       // skips 5<br />
+                    }<br />
+            </p>
+        </article>
+        <article>
+            <h2>If-Else statements</h2>
+            <p>
+                If - Else⇵<br />
+                if ((age >= 14) && (age < 19)) {        // logical condition<br />
+                status = "Eligible.";               // executed if condition is true<br />
+                } else {                                // else block is optional<br />
+                status = "Not eligible.";           // executed if condition is false<br />
+                }
+            </p>
+            <p>
+                switch (new Date().getDay()) {      // input is current day<br />
+                    case 6:                         // if (day == 6)<br />
+                        text = "Saturday";<br />          
+                        break;<br />
+                    case 0:                         // if (day == 0)<br />
+                        text = "Sunday";<br />
+                        break;<br />
+                    default:                        // else...<br />
+                        text = "Whatever";<br />
+                    } <br />
+            </p>
+        </article>
+        <article>
+            <h2>Variables</h2>
+            <p>var a;                          // variable<br />
+                var b = "init";                 // string<br />
+                var c = "Hi" + " " + "Joe";     // = "Hi Joe"<br />
+                var d = 1 + 2 + "3";            // = "33"<br />
+                var e = [2,3,5,8];              // array<br />
+                var f = false;                  // boolean<br />
+                var g = /()/;                   // RegEx<br />
+                var h = function(){};           // function object<br />
+                const PI = 3.14;                // constant<br />
+                var a = 1, b = 2, c = a + b;    // one line<br />
+                let z = 'zzz';                  // block scope local variable<br />
+            </p>
+            <p>
+                "use strict";   // Use strict mode to write secure code<br />
+                x = 1;          // Throws an error because variable is not declared<br />
+            </p>
+            <p>
+                false, true                     // boolean<br />
+                18, 3.14, 0b10011, 0xF6, NaN    // number<br />
+                "flower", 'John'                // string<br />
+                undefined, null , Infinity      // special<br />
+            </p>
+            <p>
+                a = b + c - d;      // addition, substraction<br />
+                a = b * (c / d);    // multiplication, division<br />
+                x = 100 % 48;       // modulo. 100 / 48 remainder = 4<br />
+                a++; b--;           // postfix increment and decrement<br />
+            </p>
+            <p>
+                &	AND 	 5 & 1 (0101 & 0001)	1 (1)<br />
+                |	OR 	 5 | 1 (0101 | 0001)	5 (101)<br />
+                ~	NOT 	 ~ 5 (~0101)	10 (1010)<br />
+                ^	XOR 	 5 ^ 1 (0101 ^ 0001)	4 (100)<br />
+                <<	left shift 	 5 << 1 (0101 << 1)	10 (1010)<br />
+                >>	right shift 	 5 >> 1 (0101 >> 1)	2 (10)<br />
+                >>>	zero fill right shift 	 5 >>> 1 (0101 >>> 1)	2 (10)<br />
+            </p>
+            <p>
+                a * (b + c)         // grouping<br />
+                person.age          // member<br />
+                person[age]         // member<br />
+                !(a == b)           // logical not<br />
+                a != b              // not equal<br />
+                typeof a            // type (number, object, function...)<br />
+                x << 2  x >> 3      // minary shifting<br />
+                a = b               // assignment<br />
+                a == b              // equals<br />
+                a != b              // unequal<br />
+                a === b             // strict equal<br />
+                a !== b             // strict unequal<br />
+                a < b   a > b       // less and greater than<br />
+                a <= b  a >= b      // less or equal, greater or eq<br />
+                a += b              // a = a + b (works with - * %...)<br />
+                a && b              // logical and<br />
+                a || b              // logical or<br />
+            </p>
+        </article>
+        <article>
+            <h2>Data types</h2>
+            <p>
+                var age = 18;                           // number <br />
+                var name = "Jane";                      // string<br />
+                var name = {first:"Jane", last:"Doe"};  // object<br />
+                var truth = false;                      // boolean<br />
+                var sheets = ["HTML","CSS","JS"];       // array<br />
+                var a; typeof a;                        // undefined<br />
+                var a = null;                           // value null<br />
+            </p>
+            <p>
+                var student = {                 // object name<br />
+                    firstName:"Jane",           // list of properties and values<br />
+                    lastName:"Doe",<br />
+                    age:18,<br />
+                    height:170,<br />
+                    fullName : function() {     // object function<br />
+                       return this.firstName + " " + this.lastName;<br />
+                    }<br />
+                    }; <br />
+                    student.age = 19;           // setting value<br />
+                    student[age]++;             // incrementing<br />
+                    name = student.fullName();  // call object function<br />
+                    
+            </p>
+            <p>
+                var abc = "abcdefghijklmnopqrstuvwxyz";<br />
+                var esc = 'I don\'t \n know';   // \n new line<br />
+                var len = abc.length;           // string length<br />
+                abc.indexOf("lmno");            // find substring, -1 if doesn't contain <br />
+                abc.lastIndexOf("lmno");        // last occurance<br />
+                abc.slice(3, 6);                // cuts out "def", negative values count from behind<br />
+                abc.replace("abc","123");       // find and replace, takes regular expressions<br />
+                abc.toUpperCase();              // convert to upper case<br />
+                abc.toLowerCase();              // convert to lower case<br />
+                abc.concat(" ", str2);          // abc + " " + str2<br />
+                abc.charAt(2);                  // character at index: "c"<br />
+                abc[2];                         // unsafe, abc[2] = "C" doesn't work<br />
+                abc.charCodeAt(2);              // character code at index: "c" -> 99<br />
+                abc.split(",");                 // splitting a string on commas gives an array<br />
+                abc.split("");                  // splitting on characters<br />
+                128.toString(16);               // number to hex(16), octal (8) or binary (2)<br />
+
+            </p>
+        </article>
+        <article>
+            <h2>Events</h2>
+            <p>
+                button onclick="myFunction();"><br />
+                    Click here<br />
+                button<br />
+            </p>
+            <p>
+                Mouse<br />
+                onclick, oncontextmenu, ondblclick, onmousedown, onmouseenter, onmouseleave, onmousemove, onmouseover, onmouseout, onmouseup<br />
+            </p>
+            <p>
+                Keyboard<br />
+                onkeydown, onkeypress, onkeyup<br />
+            </p>
+            <p>
+                Frame<br />
+                onabort, onbeforeunload, onerror, onhashchange, onload, onpageshow, onpagehide, onresize, onscroll, onunload<br />
+
+            </p>
+            <p>
+                Drag<br />
+                ondrag, ondragend, ondragenter, ondragleave, ondragover, ondragstart, ondrop<br />
+            </p>
+            <p>
+                Clipboard<br />
+                oncopy, oncut, onpaste<br />
+            </p>
+            <p>
+                Media<br />
+                onabort, oncanplay, oncanplaythrough, ondurationchange, onended, onerror, onloadeddata, onloadedmetadata, onloadstart, onpause, onplay, onplaying, onprogress, onratechange, onseeked, onseeking, onstalled, onsuspend, ontimeupdate, onvolumechange, onwaiting<br />
+            </p>
+            <p>
+                Animation<br />
+                animationend, animationiteration, animationstart<br />
+            </p>
+            <p>
+                Miscellaneous<br />
+                transitionend, onmessage, onmousewheel, ononline, onoffline, onpopstate, onshow, onstorage, ontoggle, onwheel, ontouchcancel, ontouchend, ontouchmove, ontouchstart<br />
+            </p>
+        </article>
+        <article>
+            <h2>Numbers and math</h2>
+            <p>
+                var pi = 3.141;<br />
+                pi.toFixed(0);          // returns 3<br />
+                pi.toFixed(2);          // returns 3.14 - for working with money<br />
+                pi.toPrecision(2)       // returns 3.1<br />
+                pi.valueOf();           // returns number<br />
+                Number(true);           // converts to number<br />
+                Number(new Date())      // number of milliseconds since 1970<br />
+                parseInt("3 months");   // returns the first number: 3<br />
+                parseFloat("3.5 days"); // returns 3.5<br />
+                Number.MAX_VALUE        // largest possible JS number<br />
+                Number.MIN_VALUE        // smallest possible JS number<br />
+                Number.NEGATIVE_INFINITY// -Infinity<br />
+                Number.POSITIVE_INFINITY// Infinity<br />
+            </p>
+            <p>
+                var pi = Math.PI;       // 3.141592653589793<br />
+                Math.round(4.4);        // = 4 - rounded<br />
+                Math.round(4.5);        // = 5<br />
+                Math.pow(2,8);          // = 256 - 2 to the power of 8<br />
+                Math.sqrt(49);          // = 7 - square root <br />
+                Math.abs(-3.14);        // = 3.14 - absolute, positive value<br />
+                Math.ceil(3.14);        // = 4 - rounded up<br />
+                Math.floor(3.99);       // = 3 - rounded down<br />
+                Math.sin(0);            // = 0 - sine<br />
+                Math.cos(Math.PI);      // OTHERS: tan,atan,asin,acos,<br />
+                Math.min(0, 3, -2, 2);  // = -2 - the lowest value<br />
+                Math.max(0, 3, -2, 2);  // = 3 - the highest value<br />
+                Math.log(1);            // = 0 natural logarithm <br />
+                Math.exp(1);            // = 2.7182pow(E,x)<br />
+                Math.random();          // random number between 0 and 1<br />
+                Math.floor(Math.random() * 5) + 1;  // random integer, from 1 to 5<br />
+            </p>
+            <p>
+                Constants like Math.PI:<br />
+                E, PI, SQRT2, SQRT1_2, LN2, LN10, LOG2E, Log10E<br />
+            </p>
+        </article>
+        <article>
+            <h2>Dates</h2>
+            <p>
+                Tue Dec 20 2022 14:35:53 GMT-0500 (Eastern Standard Time)<br />
+                var d = new Date();<br />
+                1671564953657 miliseconds passed since 1970<br />
+                Number(d) <br />
+                Date("2017-06-23");                 // date declaration<br />
+                Date("2017");                       // is set to Jan 01<br />
+                Date("2017-06-23T12:00:00-09:45");  // date - time YYYY-MM-DDTHH:MM:SSZ<br />
+                Date("June 23 2017");               // long date format<br />
+                Date("Jun 23 2017 07:45:00 GMT+0100 (Tokyo Time)"); // time zone<br />
+                 
+            </p>
+            <p>
+                var d = new Date();<br />
+                a = d.getDay();     // getting the weekday<br />
+
+                getDate();          // day as a number (1-31)<br />
+                getDay();           // weekday as a number (0-6)<br />
+                getFullYear();      // four digit year (yyyy)<br />
+                getHours();         // hour (0-23)<br />
+                getMilliseconds();  // milliseconds (0-999)<br />
+                getMinutes();       // minutes (0-59)<br />
+                getMonth();         // month (0-11)<br />
+                getSeconds();       // seconds (0-59)<br />
+                getTime();          // milliseconds since 1970<br />
+
+            </p>
+            <p>
+                var d = new Date();<br />
+                d.setDate(d.getDate() + 7); // adds a week to a date<br />
+
+                setDate();          // day as a number (1-31)<br />
+                setFullYear();      // year (optionally month and day)<br />
+                setHours();         // hour (0-23)<br />
+                setMilliseconds();  // milliseconds (0-999)<br />
+                setMinutes();       // minutes (0-59)<br />
+                setMonth();         // month (0-11)<br />
+                setSeconds();       // seconds (0-59)<br />
+                setTime();          // milliseconds since 1970)<br />
+            </p>
+        </article>
+        <article>
+            <h2>Arrays</h2>
+            <p>
+                var dogs = ["Bulldog", "Beagle", "Labrador"]; <br />
+                var dogs = new Array("Bulldog", "Beagle", "Labrador");  // declaration<br />
+
+                alert(dogs[1]);             // access value at index, first item being [0]<br />
+                dogs[0] = "Bull Terier";    // change the first item<br />
+
+                for (var i = 0; i < dogs.length; i++) {     // parsing with array.length<br />
+                console.log(dogs[i]);<br />
+                }
+            </p>
+            <p>
+                Methods<br />
+                dogs.toString();                        // convert to string: results "Bulldog,Beagle,Labrador"<br />
+                dogs.join(" * ");                       // join: "Bulldog * Beagle * Labrador"<br />
+                dogs.pop();                             // remove last element<br />
+                dogs.push("Chihuahua");                 // add new element to the end<br />
+                dogs[dogs.length] = "Chihuahua";        // the same as push<br />
+                dogs.shift();                           // remove first element<br />
+                dogs.unshift("Chihuahua");              // add new element to the beginning<br />
+                delete dogs[0];                         // change element to undefined (not recommended)<br />
+                dogs.splice(2, 0, "Pug", "Boxer");      // add elements (where, how many to remove, element list)<br />
+                var animals = dogs.concat(cats,birds);  // join two arrays (dogs followed by cats and birds)<br />
+                dogs.slice(1,4);                        // elements from [1] to [4-1]<br />
+                dogs.sort();                            // sort string alphabetically<br />
+                dogs.reverse();                         // sort string in descending order<br />
+                x.sort(function(a, b){return a - b});   // numeric sort<br />
+                x.sort(function(a, b){return b - a});   // numeric descending sort<br />
+                highest = x[0];                         // first item in sorted array is the lowest (or highest) value<br />
+                x.sort(function(a, b){return 0.5 - Math.random()});     // random order sort<br />
+            </p>
+        </article>
+        <article>
+            <h2>Global functions</h2>
+            <p>
+                eval();                     // executes a string as if it was script code<br />
+                String(23);                 // return string from number<br />
+                (23).toString();            // return string from number<br />
+                Number("23");               // return number from string<br />
+                decodeURI(enc);             // decode URI. Result: "my page.asp"<br />
+                encodeURI(uri);             // encode URI. Result: "my%page.asp"<br />
+                decodeURIComponent(enc);    // decode a URI component<br />
+                encodeURIComponent(uri);    // encode a URI component<br />
+                isFinite();                 // is variable a finite, legal number<br />
+                isNaN();                    // is variable an illegal number<br />
+                parseFloat();               // returns floating point number of string<br />
+                parseInt();                 // parses a string and returns an integer<br />
+
+            </p>
+        </article>
+        <article>
+            <h2>Regular expressions</h2>
+            <p>
+                var a = str.search(/CheatSheet/i);<br />
+                i perform case-insensitive matching<br />
+                g perform a global match<br />
+                m perform multiline matching<br />
+            </p>
+            <p>
+                \   Escape character<br />
+                \d  find a digit<br />
+                \s  find a whitespace character<br />
+                \b  find match at beginning or end of a word<br />
+                n+  contains at least one n<br />
+                n*  contains zero or more occurrences of n<br />
+                n?  contains zero or one occurrences of n<br />
+                ^   Start of string<br />
+                $   End of string<br />
+                \uxxxx  find the Unicode character<br />
+                .   Any single character<br />
+                (a|b)   a or b<br />
+                (...)   Group section<br />
+                [abc]   In range (a, b or c)<br />
+                [0-9]   any of the digits between the brackets<br />
+                [^abc]  Not in range<br />
+                \s  White space<br />
+                a?  Zero or one of a<br />
+                a*  Zero or more of a<br />
+                a*? Zero or more, ungreedy<br />
+                a+  One or more of a<br />
+                a+? One or more, ungreedy<br />
+                a{2}    Exactly 2 of a<br />
+                a{2,}   2 or more of a<br />
+                a{,5}   Up to 5 of a<br />
+                a{2,5}  2 to 5 of a<br />
+                a{2,5}? 2 to 5 of a, ungreedy<br />
+                [:punct:]   Any punctu­ation symbol<br />
+                [:space:]   Any space character<br />
+                [:blank:]   Space or tab<br />
+            </p>
+        </article>
+        <article>
+            <h2>Errors</h2>
+            <p>
+                try {                           // block of code to try<br />
+                    undefinedFunction();<br />
+                    }<br />
+                    catch(err) {                    // block to handle errors<br />
+                    console.log(err.message);<br />
+                    }
+            </p>
+            <p>
+                throw "My error message";    // throw a text<br />
+            </p>
+            <p>
+                var x = document.getElementById("mynum").value; // get input value<br />
+                try { <br />
+                if(x == "")  throw "empty";                 // error cases<br />
+                if(isNaN(x)) throw "not a number";<br />
+                x = Number(x);<br />
+                if(x > 10)   throw "too high";<br />
+                }<br />
+                catch(err) {                                    // if there's an error<br />
+                document.write("Input is " + err);          // output error<br />
+                console.error(err);                         // write the error in console<br />
+                }<br />
+                finally {<br /><br />
+                document.write("</br />Done");              // executed regardless of the try / catch result<br />
+                }<br />
+            </p>
+            <p>
+                Error name values<br />
+                RangeErrorA number is "out of range"<br />
+                ReferenceErrorAn illegal reference has occurred<br />
+                SyntaxErrorA syntax error has occurred<br />
+                TypeErrorA type error has occurred<br />
+                URIErrorAn encodeURI() error has occurred<br />
+            </p>
+        </article>
+        <article>
+            <h2>JSON</h2>
+            <p>
+                var str = '{"names":[' +                    // crate JSON object<br />
+                '{"first":"Hakuna","lastN":"Matata" },' +<br />
+                '{"first":"Jane","lastN":"Doe" },' +<br />
+                '{"first":"Air","last":"Jordan" }]}';<br />
+                obj = JSON.parse(str);                      // parse<br />
+                document.write(obj.names[1].first);         // access<br />
+            </p>
+            <p>
+                var myObj = { "name":"Jane", "age":18, "city":"Chicago" };  // create object<br />
+                var myJSON = JSON.stringify(myObj);                         // stringify<br />
+                window.location = "demo.php?x=" + myJSON;                   // send to php<br />
+            </p>
+            <p>
+                Storing and retrieving<br />
+                myObj = { "name":"Jane", "age":18, "city":"Chicago" };<br />
+                myJSON = JSON.stringify(myObj);                 // storing data<br />
+                localStorage.setItem("testJSON", myJSON);   <br />
+                text = localStorage.getItem("testJSON");        // retrieving data <br />
+                obj = JSON.parse(text);<br />
+                document.write(obj.name);<br />
+            </p>
+        </article>
+        <article>
+            <h2>Promises</h2>
+            <p>
+                function sum (a, b) {<br />
+                    return Promise(function (resolve, reject) { <br />
+                     setTimeout(function () {                                       // send the response after 1 second<br />
+                       if (typeof a !== "number" || typeof b !== "number") {        // testing input types<br />
+                         return reject(new TypeError("Inputs must be numbers"));<br />
+                       }<br />
+                       resolve(a + b);<br />
+                     }, 1000);<br />
+                    });<br />
+                    }<br />
+                    var myPromise = sum(10, 5);<br />
+                    myPromsise.then(function (result) {<br />
+                    document.write(" 10 + 5: ", result);<br />
+                    return sum(null, "foo");              // Invalid data and return another promise<br />
+                    }).then(function () {                   // Won't be called because of the error<br />
+                    }).catch(function (err) {               // The catch handler is called instead, after another second<br />
+                    console.error(err);                   // => Please provide two numbers to sum.<br />
+                    });<br />
+            </p>
+            <p>
+                States<br />
+                pending, fulfilled, rejected <br />
+            </p>
+            <p>
+                Properties<br />
+                Promise.length, Promise.prototype<br />
+            </p>
+            <p>
+                Methods<br />
+                Promise.all(iterable), Promise.race(iterable), Promise.reject(reason), Promise.resolve(value)<br />
+            </p>
+        </article>
+    </main>
+
+    <section>
+         A group of related content
+     </section>
+
+  <aside>
+         Sidebar
+     </aside>
+
+  <footer>
+         <p>&copy; Tim's Knowledgebase</p>
+         <address>
+             Contact <a href="mailto:tjohnson082083@gmail.com">me</a>
+     </address>
+ </footer>
