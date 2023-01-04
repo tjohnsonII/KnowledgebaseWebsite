@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>C# Cheat sheet</title>
+        <meta name="description" content="Roughly 155 characters">
+
+        <link rel="stylesheet" type="text/css" href="style/style.css">
+
+        <script
+            src="script.js"></script>
+        <script src="script.js"></script>
+    </head>
+
+    <header>
+        <div class="top_of_page">HTML</div>
+            <nav class="nav">
+                <ul class="ulList">
+                    <li><a href="index.html">Home</a>
+                        <li><a href="java_script.html">JavaScript Programming Page</a>
+                        <li><a href="java.html">Java Programming Page</a>
+                        <li><a href="cpp.html">Cpp Programming Page</a>
+                        <li><a href="csharp.html">C# Programming Page</a>
+                        <li><a href="r.html">R Programming Page</a>	
+                        <li><a href="c.html">C Programming Page</a>
+                        <li><a href="python.html">Python Programming Page</a>
+                        <li><a href="batch_scripting.html">Batch Scripting Page</a>
+                        <li><a href="bash_scripting.html">Bash Scripting Page</a>
+                        <li><a href="sql.html">SQL Page</a>
+                        <li><a href="assembly.html">Assembly Language Page</a>
+                        <li><a href="powershell.html">Powershell</a></li>
+                        <li><a href="ccna.html">ccna</a></li>
+                </ul>
+            </nav>
+        </div>    
+    </header>
+
+            
+    <main role="main">
+        <article>
+            <h1>Hello World Program</h1>
+            <p>
+                Compiling and running (make sure you are in the project directory)
+            </p>
+            <img src="images/csharp_helloWorld.png" alt="hello world"/> <br/>
+            <img src="images/csharp_compiling.png" alt="compile"/>
+        </article>
+
+        <article>
+            <h1>Data Types</h1>
+            <p>
+                int intNum = 9; <br/>
+                long longNum = 9999999; <br/>
+                float floatNum = 9.99F;      <br/>   
+                double doubleNum = 99.999;<br/>
+                decimal decimalNum = 99.9999M;<br/>
+                char letter = 'D';<br/>
+                bool @bool = true;<br/>
+                string site = "quickref.me";<br/>
+
+                var num = 999;<br/>
+                var str = "999";<br/>
+                var bo = false;<br/>
+            </p>   
+            
+            <table style="width: 100%;" border="3" cellpadding="10">
+                <tbody>
+                    <tr>
+                        <td>Data Type</td>
+                        <td>Size</td>
+                        <td>Range</td>
+                    </tr>
+                    <tr>
+                        <td>int</td>
+                        <td>4 bytes</td>
+                        <td>-2^31 to 2^31-</td>
+                    </tr>
+                    <tr>
+                        <td>long</td>
+                        <td>8 bytes</td>
+                        <td>-2^63 to 2^63-1</td>
+                    </tr>
+                    <tr>
+                        <td>float</td>
+                        <td>4 bytes</td>
+                        <td>6 to 7 decimal digits</td>
+                    </tr>
+                    <tr>
+                        <td>double</td>
+                        <td>8 bytes</td>
+                        <td>15 decimal digits</td>
+                    </tr>
+                    <tr>
+                        <td>decimal</td>
+                        <td>16 bytes</td>
+                        <td>28 to 29 decimal digits</td>
+                    </tr>
+                    <tr>
+                        <td>char</td>
+                        <td>2 bytes</td>
+                        <td>0 to 65535</td>
+                    </tr>
+                    <tr>
+                        <td>bool</td>
+                        <td>1 bit</td>
+                        <td>true/false</td>
+                    </tr>
+                    <tr>
+                        <td>string</td>
+                        <td>2 bytes per char</td>
+                        <td>N/A</td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+
+        <article>
+            <h1>Comments</h1>
+            <p>
+                // Single-line
+            </p>
+            <p>/* Multi-line comment */</p>
+        </article>
+
+        <article>
+            <h1>Strings</h1>
+            <img src="images/csharp_strings.png" alt="strings"/><br/>
+            <img src="images/csharp_strings2.png" alt="strings"/><br/>
+            <img src="images/csharp_long_string.png" alt="strings"/><br/>
+        </article>
+
+        <article>
+            <h1>User Input</h1>
+            <img src="images/csharp_user_input.png" alt="user input"/>
+        </article>
+
+        <article>
+            <h1>Control Structure and Conditionals</h1>
+            <img src="images/csharp_control_structure.png" alt="control structure"/>
+
+        </article>
+
+        <article>
+            <h1>Arrays</h1>
+            <img src="images/csharp_arrays.png" alt="arrays"/>
+        </article>
+
+        <article>
+            <h1>Loops</h1>
+            <img src="images/csharp_loops.png" alt="loops"/>
+        </article>
+
+        <article>
+            <h1>Misc</h1>
+            <table style="width:100%" border="3" cellpadding="5">
+                <thead>
+                    <tr>
+                        <th>Term</th>
+                        <th>Definition</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Runtime</td>
+                        <td>A collection of services that are required to execute a given compiled unit of code.</td>
+                    </tr>
+                    <tr>
+                        <td>Common Language Runtime (CLR)</td>
+                        <td>Primarily locates, loads, and managed .NET objects. The CLR also handles memory management, application hosting, coordination of threads, performaing security checks, and other low-level details.</td>
+                    </tr>
+                    <tr>
+                        <td>Managed code</td>
+                        <td>Code that compiles and runs on .NET runtime. C#/F#/VB are examples.</td>
+                    </tr>
+                    <tr>
+                        <td>Unmanaged code</td>
+                        <td>Code that compiles straight to machine code and cannot be directly hosted by the .NET runtime. Contains no free memory management, garbage collection, etc. DLLs created from C/C++ are examples.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+    </main>
+
+    <section>
+         <a href="https://simplecheatsheet.com/tag/c-cheat-sheet-1/">C# Cheat Sheet Full</a>
+     </section>
+
+  <aside>
+         Sidebar
+     </aside>
+
+  <footer>
+         <p>&copy; Tim's Knowledge Base</p>
+         <address>
+             Contact <a href="mailto:tjohnson082083@gmail.com">me</a>
+     </address>
+ </footer>

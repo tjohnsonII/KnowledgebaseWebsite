@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>C Programming Cheat Sheet</title>
+        <meta name="description" content="Roughly 155 characters">
+
+        <link rel="stylesheet" type="text/css" href="style/style.css">
+
+        <script
+            src="script.js"></script>
+        <script src="script.js"></script>
+    </head>
+
+    <header>
+        <div class="top_of_page">HTML</div>
+            <nav class="nav">
+                <ul class="ulList">
+                    <li><a href="index.html">Home</a>
+                        <li><a href="java_script.html">JavaScript Programming Page</a>
+                        <li><a href="java.html">Java Programming Page</a>
+                        <li><a href="cpp.html">Cpp Programming Page</a>
+                        <li><a href="csharp.html">C# Programming Page</a>
+                        <li><a href="r.html">R Programming Page</a>	
+                        <li><a href="c.html">C Programming Page</a>
+                        <li><a href="python.html">Python Programming Page</a>
+                        <li><a href="batch_scripting.html">Batch Scripting Page</a>
+                        <li><a href="bash_scripting.html">Bash Scripting Page</a>
+                        <li><a href="sql.html">SQL Page</a>
+                        <li><a href="assembly.html">Assembly Language Page</a>
+                        <li><a href="powershell.html">Powershell</a></li>
+                        <li><a href="ccna.html">ccna</a></li>
+                </ul>
+            </nav>
+        </div>    
+    </header>
+
+            
+    <main role="main">
+        <article>
+            <h1>C program stucture</h1> <br/>
+            <p>
+            &emsp;    pre-processor directives <br/> 
+            &emsp;    global declarations <br/> <br/>
+
+
+            &emsp;    main() <br/>
+            &emsp;    { <br/>
+                &emsp;&emsp;        local variable deceleration <br/>
+                &emsp;&emsp;    statement sequences <br/>
+                &emsp;&emsp;    function invoking <br/>
+                &emsp;    }
+            </p>
+        </article>
+
+        <article>
+            <h1>C Keywords</h1>
+            <table style="width: 2%;" border="3" cellpadding="4">
+                <tbody>
+                <tr>
+                <td>auto</td>
+                <td>double</td>
+                <td>int</td>
+                <td>struct</td>
+                </tr>
+                <tr>
+                <td>break</td>
+                <td>else</td>
+                <td>long</td>
+                <td>switch</td>
+                </tr>
+                <tr>
+                <td>case</td>
+                <td>enum</td>
+                <td>register</td>
+                <td>typedef</td>
+                </tr>
+                <tr>
+                <td>char</td>
+                <td>extern</td>
+                <td>return</td>
+                <td>union</td>
+                </tr>
+                <tr>
+                <td>const</td>
+                <td>float</td>
+                <td>short</td>
+                <td>unsigned</td>
+                </tr>
+                <tr>
+                <td>continue</td>
+                <td>for</td>
+                <td>signed</td>
+                <td>void</td>
+                </tr>
+                <tr>
+                <td>default</td>
+                <td>goto</td>
+                <td>sizeof</td>
+                <td>volatile</td>
+                </tr>
+                <tr>
+                <td>do</td>
+                <td>if</td>
+                <td>static</td>
+                <td>while</td>
+                </tr>
+                </tbody>
+                </table>
+        </article>
+
+        <article>
+            <h1>C Character Set</h1>
+            <p>
+                A character denotes any alphabet, digit or special symbol used to represent 
+                information. Following are the valid alphabets, numbers and special symbols 
+                allowed in C.
+            </p>
+
+            <blockquote>
+                Alphabets - A, B, ….., Y, Z a, b, ……, y, z
+                Digits - 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+                Special symbols - ~ &#39 ! @ # % ^ & * ( ) _ - + = | \ { }
+                [ ] : ; " ' &lt &gt , . ? /
+            </blockquote>
+        </article>
+
+        <article>
+            <h1>Rules for Writing, Compiling and Executing the C program</h1>
+            <p>
+                C is case sensitive means variable named "COUNTER" is different from a 
+                variable named "counter". <br/><br/>
+                
+                All keywords are lowercased. <br/><br/>
+                
+                Keywords cannot be used for any other purpose (like variable names). <br/><br/>
+                
+                Every C statement must end with a ;. Thus ;acts as a statement terminator. <br/><br/>
+                
+                First character must be an alphabet or underscore, no special symbol other 
+                than an underscore, no commas or blank spaces are allowed with in a variable, 
+                constant or keyword. <br/><br/>
+                
+                Blank spaces may be inserted between two words to improve the readability of 
+                the statement. However, no blank spaces are allowed within a variable, constant 
+                or keyword. <br/><br/>
+                
+                Variable must be declared before it is used in the program. <br/><br/>
+                
+                File should be have the extension .c <br/><br/>
+                
+                Program need to be compiled before execution. <br/><br/>
+
+            </p>
+        </article>
+
+        <article>
+            <h1>Data types and Placeholders</h1>
+            <p>
+                C has 5 basic built-in data types. <br/><br/>
+                Data type defines a set of values that a variable can store along with a set of 
+                operations that can be performed on it. <br/><br/>
+                A variable takes different values at different times. <br/><br/>
+                General form for declaring a variable is: <br/><br/>
+                type name; <br/><br/>
+            </p>
+
+            <p>
+                    #include&ltstdio.h&gt <br/>
+                    main() <br/>
+                    { <br/>
+                    &emsp;    int sum; <br/>
+                    &emsp;    sum=12; <br/>
+                    &emsp;    sum=sum+5; <br/>
+                    &emsp;    printf("Sum is %d",sum); <br/>
+                    }<br/>
+            </p>
+
+            <h2>printf function will print the following:</h2>
+            <p>Sum is 17 <br/>
+                In fact %d is the placeholder for integer variable value that its name comes 
+                after double quotes.</p>
+            <p>
+                Common data types are: <br/>
+                int - integer <br/>
+                char - character <br/>
+                long - long integer <br/>
+                float - float number <br/>
+                double - long float <br/>
+            </p>
+            
+            <table style="width: 2%;" border="3" cellpadding="5">
+                <tbody>
+                <tr>
+                <td>Placeholders</td>
+                <td>Format</td>
+                </tr>
+                <tr>
+                <td>%c</td>
+                <td>Character</td>
+                </tr>
+                <tr>
+                <td>%d</td>
+                <td>Signed decimal integer</td>
+                </tr>
+                <tr>
+                <td>%i</td>
+                <td>Signed decimal integer</td>
+                </tr>
+                <tr>
+                <td>%e</td>
+                <td>Scientific notation[e]</td>
+                </tr>
+                <tr>
+                <td>%E</td>
+                <td>Scientific notation[E]</td>
+                </tr>
+                <tr>
+                <td>%f</td>
+                <td>Decimal floating point</td>
+                </tr>
+                <tr>
+                <td>%o</td>
+                <td>unsigned octal</td>
+                </tr>
+                <tr>
+                <td>%s</td>
+                <td>String of characters</td>
+                </tr>
+                <tr>
+                <td>%u</td>
+                <td>unsigned decimal integer</td>
+                </tr>
+                <tr>
+                <td>%x</td>
+                <td>unsigned Hexadecimal (lower)</td>
+                </tr>
+                <tr>
+                <td>%X</td>
+                <td>unsigned Hexadecimal (upper)</td>
+                </tr>
+                <tr>
+                <td>%p</td>
+                <td>display a pointer</td>
+                </tr>
+                <tr>
+                <td>%%</td>
+                <td>print a %</td>
+                </tr>
+                </tbody>
+                </table>
+           
+        </article>
+
+        <article>
+            <h1>Escape sequences</h1>
+            <table style="width: 2%;" border="3" cellpadding="5">
+                <tbody>
+                <tr>
+                <td>\a</td>
+                <td>Bell</td>
+                </tr>
+                <tr>
+                <td>\n</td>
+                <td>New line</td>
+                </tr>
+                <tr>
+                <td>\r</td>
+                <td>Carriage return</td>
+                </tr>
+                <tr>
+                <td>\b</td>
+                <td>Backspace</td>
+                </tr>
+                <tr>
+                <td>\f</td>
+                <td>Formfeed</td>
+                </tr>
+                <tr>
+                <td>\t</td>
+                <td>Horizontal tab</td>
+                </tr>
+                <tr>
+                <td>\"</td>
+                <td>Quotation mark</td>
+                </tr>
+                <tr>
+                <td>\v</td>
+                <td>Vertical tab</td>
+                </tr>
+                <tr>
+                <td>\'</td>
+                <td>Apostophe</td>
+                </tr>
+                <tr>
+                <td>\\</td>
+                <td>Backslash</td>
+                </tr>
+                <tr>
+                <td>\?</td>
+                <td>Question mark</td>
+                </tr>
+                <tr>
+                <td>\0</td>
+                <td>null</td>
+                </tr>
+                </tbody>
+                </table>
+        </article>
+
+        <article>
+            <h1>Input</h1>
+            
+            <h3>
+                scanf function used to receiving input from keyboard.
+            </h3>
+            <p>General form of scanf function is :</p>
+            <p>scanf("Format string",&variable,&variable,...); </p>
+            <p>example:</p>
+            <p>
+                float a; <br/>
+                int n; <br/>
+                scanf("%d%f",&n,&a); <br/>
+            </p>
+
+            <h3>Point to Note</h3>
+            <p>While entering the string using scanf() we must be cautious about
+                two things:</p>
+            <p>The length of the string should not exceed the dimension of the character array. 
+                This is because the C compiler doesn&#39t perform bounds checking on character arrays.</p>
+            <p>scanf() is not capable of receiving multi-word strings. Therefore names such as 
+                "Vineet Choudhary" would be unacceptable. The way to get around this limitation 
+                is by using the function gets().The usage of functions gets() and its counter 
+                part puts() is shown below.</p>
+            <img src="images/gets_puts_in_c.png" alt="get and put"/>
+        </article>
+
+        <article>
+            <h1>
+                Expression & Operators Precedence
+            </h1>
+            <p>
+                Following table summarizes the rules for precedence and associativity of all 
+                operators, including those that we have not yet discussed. Operators on the 
+                same line have the same precedence; rows are in order of decreasing precedence, 
+                so, for example, *, /, and % all have the same precedence, which is higher than 
+                that of binary + and -. The ``operator'' () refers to function call. 
+                The operators -> and . are used to access members of structures;
+            </p>
+
+            <table style="width: 2%;" border="3" cellpadding="5">
+                <tbody><tr>
+                <th>Description</th>
+                <th>Operators</th>
+                <th>Associativity</th>
+                </tr>
+                <tr>
+                <td>Function Expression</td>
+                <td>()</td>
+                <td>Left to Right</td>
+                </tr>
+                <tr>
+                <td>Array Expression</td>
+                <td>[]</td>
+                <td>Left to Right</td>
+                </tr>
+                <tr>
+                <td>Structure Operator</td>
+                <td>-&gt; </td>
+                <td>Left to Right</td>
+                </tr>
+                <tr>
+                <td>Structure Operator</td>
+                <td>.</td>
+                <td>Left to Right</td>
+                </tr>
+                <tr>
+                <td>Unary minus</td>
+                <td>-</td>
+                <td>Right to Left</td>
+                </tr>
+                <tr>
+                <td>Increment/Decrement </td>
+                <td>++, --</td>
+                <td>Right to Left</td>
+                </tr>
+                <tr>
+                <td>One&#39s compliment</td>
+                <td>~</td>
+                <td>Right to Left</td>
+                </tr>
+                <tr>
+                <td>Negation</td>
+                <td>!</td>
+                <td>Right to Left</td>
+                </tr>
+                <tr>
+                <td>Address of </td>
+                <td>&amp;</td>
+                <td>Right to Left</td>
+                </tr>
+                <tr>
+                <td>Value of address</td>
+                <td>`*`</td>
+                <td>Right to Left</td>
+                </tr>
+                <tr>
+                <td>Type cast</td>
+                <td>(type)</td>
+                <td>Right to Left</td>
+                </tr>
+                <tr>
+                <td>Size in bytes</td>
+                <td>sizeof</td>
+                <td>Right to Left</td>
+                </tr>
+                <tr>
+                <td>Multiplication</td>
+                <td>`*`</td>
+                <td>Left to Right</td>
+                </tr>
+                <tr>
+                <td>Division</td>
+                <td>/</td>
+                <td>Left to Right</td>
+                </tr>
+                <tr>
+                <td>Modulus</td>
+                <td>%</td>
+                <td>Left to Right</td>
+                </tr>
+                <tr>
+                <td>Addition</td>
+                <td>+</td>
+                <td>Left to Right</td>
+                </tr>
+                <tr>
+                <td>Subtraction</td>
+                <td>-</td>
+                <td>Left to Right</td>
+                </tr>
+                <tr>
+                <td>Left shift</td>
+                <td>&lt;&lt;</td>
+                <td>Left to Right</td>
+                </tr>
+                <tr>
+                <td>Right shift </td>
+                <td>&gt;&gt;</td>
+                <td>Left to Right</td>
+                </tr>
+                <tr>
+                <td>Less than </td>
+                <td>&lt;</td>
+                <td>Left to Right</td>
+                </tr>
+                <tr>
+                <td>Less than or equal to</td>
+                <td>&lt;=</td>
+                <td>Left to Right</td>
+                </tr>
+                <tr>
+                <td>Greater than</td>
+                <td>&gt;</td>
+                <td>Left to Right</td>
+                </tr>
+                <tr>
+                <td>Greater than or equal to  </td>
+                <td>&gt;=</td>
+                <td>Left to Right</td>
+                </tr>
+                <tr>
+                <td>Equal to </td>
+                <td>==</td>
+                <td>Left to Right</td>
+                </tr>
+                <tr>
+                <td>Not equal to</td>
+                <td>!=</td>
+                <td>Left to Right</td>
+                </tr>
+                <tr>
+                <td>Bitwise AND </td>
+                <td>&amp;</td>
+                <td>Left to Right</td>
+                </tr>
+                <tr>
+                <td>Bitwise exclusive OR</td>
+                <td>^</td>
+                <td>Left to Right</td>
+                </tr>
+                <tr>
+                <td>Bitwise inclusive OR</td>
+                <td>|</td>
+                <td>Left to Right</td>
+                </tr>
+                <tr>
+                <td>Logical AND </td>
+                <td>&amp;&amp;</td>
+                <td>Left to Right</td>
+                </tr>
+                <tr>
+                <td>Logical OR</td>
+                <td>||</td>
+                <td>Left to Right</td>
+                </tr>
+                <tr>
+                <td>Conditional</td>
+                <td>?:</td>
+                <td>Right to Left</td>
+                </tr>
+                <tr>
+                <td>Assignment</td>
+                <td>=, *=, /=, %=, +=, -=, &amp;=, ^=, |=, &lt;&lt;=, &gt;&gt;=</td>
+                <td>Right to Left</td>
+                </tr>
+                <tr>
+                <td>Comma</td>
+                <td>,</td>
+                <td>Right to Left</td>
+                </tr>
+                </tbody></table>
+
+                <p>Unary & +, -, and * have higher precedence than the binary forms.</p>
+        </article>
+
+        <article>
+            <h1>
+                The Decision Control Structure
+            </h1>
+            <p>
+                C has three major decision making instructions—the if statement, 
+                the if-else statement, and the switch statement.
+            </p>
+            <h3>The if statement</h3>
+            <p>
+                //for single statement <br/>
+                if(condition) <br/>
+            &emsp;        statement; <br/>
+                
+                //for multiple statement <br/>
+                if(condition) <br/>
+                { <br/>
+            &emsp;        block of statement; <br/>
+                } <br/>
+            </p>
+
+            <p>
+                if (expression) <br/>
+                { <br/>
+            &emsp;        block of statement; <br/>
+                } <br/>
+                else <br/>
+            &emsp;        statement; <br/>
+            </p>
+
+            <p>
+                if (expression1) <br/>
+            &emsp;    statement; <br/>
+                else  <br/>
+                { <br/>
+            &emsp;  if (expression2) <br/>
+            &emsp;&emsp;  statement;  <br/>
+            &emsp;  else <br/>
+            &emsp;  { <br/>
+            &emsp;&emsp;        block of statement; <br/>
+            &emsp;  } <br/>
+                } <br/>
+            </p>
+
+            <p>
+                if(expression1) <br/>
+            &emsp;    statement; <br/>
+                else if(expression2) <br/> 
+            &emsp;    statement;  <br/>
+                else if(expression3) <br/>
+            &emsp;    statement; <br/>
+                else if(expression4) <br/> 
+                { <br/>
+            &emsp;    block of statement; <br/>
+                } <br/>
+                else <br/>
+            &emsp;    statement; <br/>
+                    
+            </p>
+
+            <p>
+                switch (expression) <br/>
+                { <br/>
+                &emsp; case constant-expression: <br/>
+                &emsp;&emsp;        statement1; <br/>
+                &emsp;&emsp;        statement2; <br/>
+                &emsp;&emsp;        break; <br/>
+                &emsp; case constant-expression: <br/>
+                &emsp;&emsp;        statement; <br/>
+                &emsp;&emsp;        break; <br/>
+                &emsp;    ... <br/>
+                &emsp;    default:  <br/>
+                &emsp;&emsp;        statement; <br/>
+                }
+            </p>
+        </article>
+
+        <article>
+            <h1>
+                Loops
+            </h1>
+            <p> 
+                while(expression)
+                {
+            &emsp;     statement;
+                }
+            </p>
+
+            <p>
+                do
+                {
+            &emsp;        statements;
+                }while(expression);
+            </p>
+
+            <p>
+                for(control statemt)
+                {
+            &emsp;    block of statement
+                }
+            </p>
+        </article>
+
+        <article>
+            <h1>
+                Break and Continue
+            </h1>
+            <p>
+                We used break statement in switch...case structures in previouslly. 
+                We can also use "break" statement inside loops to terminate a loop 
+                and exit it (with a specific condition).
+            </p>
+            <img src="images/c_while_loop_example.png" alt="c while loop example" />
+            <img src="images/c_while_loop_example2.png" alt="c while loop example 2"/>
+        </article>
+
+        <article>
+            <h1>
+                Goto and labels
+            </h1>
+            <p>
+                C provides the infinitely-abusable goto statement, and labels to branch to. 
+                Formally, the goto statement is never necessary, and in practice it is almost always easy 
+                to write code without it. We have not used goto in this book.
+                Nevertheless, there are a few situations where gotos may find a place. 
+                The most common is to abandon processing in some deeply nested structure, 
+                such as breaking out of two or more loops at once. The break statement cannot be used 
+                directly since it only exits from the innermost loop. Thus:
+            </p>
+            <img src="images/c_goto_and_labels.png" alt="goto and labels" />
+        </article>
+
+        <article>
+            <h1>
+                Arrays
+            </h1>
+            <p>
+                Arrays are structures that hold multiple variables of the same data type. 
+                The first element in the array is numbered 0, so the last element is 1 less 
+                than the size of the array. An array is also known as a subscripted variable. 
+                Before using an array its type and dimension must be declared.
+            </p>
+            <img src="images/c_array_declaration.png" alt="array declarations"/> <br/>
+            <img src="images/c_arrays.png" alt="arrays"/> <br/>
+            <img src="images/c_array_access.png" atl="accessing array"/>                <br/>
+            <img src="images/data_into_array.png" alt="data into array"/><br/>
+            <img src="images/reading_from_array.png" alt="reading from array"/><br/>
+            <img src="images/array_examples.png" alt="array example"/><br/>
+        </article>
+
+        <article>
+            <h1>Strings</h1>
+            <p>Strings are arrays of characters. Each member of array contains one of characters in the string.
+
+            </p>
+
+            <img src="images/strings_in_c.png" alt="strings"/>                <br/>
+            <img src="images/string_example_c.png" alt="string example"/><br/>
+
+            <h3>Standard Library String Functions</h3>
+            <p>With every C compiler a large set of useful string handling library functions 
+                are provided in &ltcode&gtstring.h&lt/code&gt file.</p>
+
+                <ul>
+                    <li><code>strlen</code> -  Finds length of a string</li>
+                    <li><code>strlwr</code> -  Converts a string to lowercase</li>
+                    <li><code>strupr</code> -  Converts a string to uppercase</li>
+                    <li><code>strcat</code> -  Appends one string at the end of another</li>
+                    <li><code>strncat</code> -  Appends first n characters of a string at the end of<br>
+                    another</li>
+                    <li><code>strcpy</code> -  Copies a string into another</li>
+                    <li><code>strncpy</code> -  Copies first n characters of one string into another</li>
+                    <li><code>strcmp</code> -  Compares two strings</li>
+                    <li><code>strncmp</code> -  Compares first n characters of two strings</li>
+                    <li><code>strcmpi</code> -  Compares two strings without regard to case ("i" denotes<br>
+                    that this function ignores case)</li>
+                    <li><code>stricmp</code> -  Compares two strings without regard to case (identical to<br>
+                    strcmpi)</li>
+                    <li><code>strnicmp</code> -  Compares first n characters of two strings without regard<br>
+                    to case</li>
+                    <li><code>strdup</code> -  Duplicates a string</li>
+                    <li><code>strchr</code> -  Finds first occurrence ofa given character in a string</li>
+                    <li><code>strrchr</code> -  Finds last occurrence ofa given character in a string</li>
+                    <li><code>strstr</code> -  Finds first occurrence of a given string in another string</li>
+                    <li><code>strset</code> -  Sets all characters ofstring to a given character</li>
+                    <li><code>strnset</code> -  Sets first n characters ofa string to a given character</li>
+                    <li><code>strrev</code> -  Reverses string</li>
+                    </ul>    
+        </article>
+
+        <article>
+            <h1>
+                Functions
+            </h1>
+            <p>A function is combined of a block of code that can be called or used anywhere in 
+                the program by calling the name. Body of a function starts with { and ends with }. 
+                This is similar to the main function. Example below shows how we can write a simple 
+                function.</p>
+            <img src="images/functions_in_c.png" alt="functions"/>
+            <img src="images/functions_in_c_2.png" alt="functions 2"/>
+            <img src="images/functions_with_return_in_c.png" alt="functions 3"/>
+
+            <p>In our previous examples we did not return any value in our functions. 
+                For example you must return a value in main() function.</p>
+            
+            <img src="images/main_function_c.png" alt="main function"/>
+            <img src="images/void_function_c.png" alt="void function"/>
+
+            <p> Recursive Function</p>
+            <img src="images/recursive_function_c.png" alt="recursive function"/>
+            <p>Multiple Parameters</p>
+            <img src="images/multiple_parameters_c.png" alt="multiple parameters"/>
+        </article>
+
+        <article>
+            <h1>Call by value</h1>
+            <p>C programming language function calls, use call by value method. 
+                Let&#39s see an example to understand this subject better.</p>
+            <img src="images/call_by_value_c.png" alt="call by value"/>   
+            <h1>Call by Reference</h1>
+            <p>There is another method of sending variables being called "Call by reference". 
+                This second method enables function to modify value of argument variables used 
+                in function call.</p>
+            <img src="images/call_by_reference_c.png" alt="call by reference"/> 
+        </article>
+
+        <article>
+            <h1>Pointers</h1>
+            <p>A pointer is a variable that contains the address of a variable. The main thing 
+                is that once you can talk about the address of a variable, you'll then be able 
+                to goto that address and retrieve the data stored in it.</p>
+
+            <img src="images/pointer_syntax_c.png" alt="pointer syntax"/> <br/>
+            <img src="images/pointer_example_c.png" alt="pointer example"/> <br/>
+            <img src="images/pointer_example_2_c.png" alt="pointer example 2"/> <br/>
+            <img src="images/pointer_example_3_c.png" alt="ponter example 3"/>
+        </article>
+
+        <article>
+            <h1>Structures</h1>
+            <p>A structure is a collection of one or more variables, possibly of different types,
+                grouped together under a single name for convenient handling.
+            </p>
+            <img src="images/structure_in_c.png" alt="structure"/>
+            <img src="images/structure_example_c.png" alt="structure example"/>
+            <img src="images/structure_example_2_c.png" alt="structure example 2"/>
+
+            <h3>Accessing Structure Elements</h3>
+            <img src="images/structure_bigExample_c.png" alt="big struct example"/>
+        </article>
+
+        <article>
+            <h1>Files</h1>
+            <h3>File Pointers</h3>
+            <img src="images/fileHandling_c.png" alt="file Handling"/>
+            <h3>Opening a file</h3>
+            <img src="images/opening_file_c.png" alt="opening a file"/>
+            <p>
+                The filename and mode are both strings. <br/>
+
+                The mode can be    <br/>                                          
+
+                r - read <br/>
+                w - write, overwrite file if it ex ists <br/>
+                a - write, but append instead of overwrite <br/>
+                r+ - read & write, do not destroy file if it exists<br/>
+                w+ - read & write, but overwrite file if it exists<br/>
+                a+ - read & write, but append instead of overwrite <br/>
+                b - may be appended to any of the above to force the file to be opened in 
+                    binary mode rather than text mode <br/>
+                fp = fopen("data.dat","a"); - will open the disk file data.dat for writing, 
+                        and any information written will be appended to the file. <br/>
+            </p>
+            <img src="images/file_HandlingPrg_c.png" alt="file handling prg"/>
+        </article>
+
+        <article>
+            <h1>Command Line Arguments</h1>
+            <p>The arguments that we pass on to main() at the command prompt are called 
+                command line arguments. </p>
+            <img src="images/command_line_args_c.png" alt="command line args"/>
+            <img src="images/command_line_args_example.png" alt="command line args"/>
+        </article>
+    </main>
+
+    <section>
+        <blockquote>
+            C is a programming language developed at AT & T&#39s 
+            Bell Laboratories of USA in 1972 by Dennis Ritchie.
+        </blockquote> 
+
+        <blockquote>
+            Any programming Language can be divided in to two categories.
+
+            Problem oriented (High level language)
+            Machine oriented (Low level language)
+            But C is considered as a Middle level Language.
+
+            C is modular, portable, reusable.
+        </blockquote>
+     </section>
+
+  <aside>
+         Sidebar
+     </aside>
+
+  <footer>
+         <p>&copy; Tim's Knowledge Base</p>
+         <address>
+             Contact <a href="mailto:tjohnson082083@gmail.com">me</a>
+     </address>
+ </footer>

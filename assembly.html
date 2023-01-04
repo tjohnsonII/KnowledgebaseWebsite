@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Assembly Language Cheat Sheet</title>
+        <meta name="description" content="Roughly 155 characters">
+
+        <link rel="stylesheet" type="text/css" href="style/style.css">
+
+        <script
+            src="script.js"></script>
+        <script src="script.js"></script>
+    </head>
+
+    <header>
+        <div class="top_of_page">HTML</div>
+            <nav class="nav">
+                <ul class="ulList">
+                    <li><a href="index.html">Home</a>
+                        <li><a href="java_script.html">JavaScript Programming Page</a>
+                        <li><a href="java.html">Java Programming Page</a>
+                        <li><a href="cpp.html">Cpp Programming Page</a>
+                        <li><a href="csharp.html">C# Programming Page</a>
+                        <li><a href="r.html">R Programming Page</a>	
+                        <li><a href="c.html">C Programming Page</a>
+                        <li><a href="python.html">Python Programming Page</a>
+                        <li><a href="batch_scripting.html">Batch Scripting Page</a>
+                        <li><a href="bash_scripting.html">Bash Scripting Page</a>
+                        <li><a href="sql.html">SQL Page</a>
+                        <li><a href="assembly.html">Assembly Language Page</a>
+                        <li><a href="powershell.html">Powershell</a></li>
+                        <li><a href="ccna.html">ccna</a></li>
+                </ul>
+            </nav>
+        </div>    
+    </header>
+
+            
+    <main>
+        <article>
+            <p>
+            An assembly language is a low-level programming language 
+            designed for a specific type of processor.
+            <br/>
+            A 32-bit processor on x86 architecture has 32-bit registers, 
+            while 64-bit processors have 64-bit registers. Thus, x64 allows
+            the CPU to store more data and access it faster. The register 
+            width also determines the amount of memory a computer can 
+            utilize
+            <br/>
+            x86-64 is also known as x64 and AMD64.
+            </p>
+        </article>
+
+        <article>
+            <img src="images/assembly_86_64.png" alt="assembly"/>
+            <p>Functions return values in rax.  
+                How you pass parameters into functions varies depending on the platform:
+            </p>
+        </article>
+
+        <article>
+            <img src="images/assembly_86_64_FunctionCall_Interface.png" alt="Function call interface"/>
+        </article>
+
+        <article>
+            <img src="images/assembly_86_64_Info.png" alt="info"/><br/>
+            <img src="images/assembly_86_64_Info2.png" alt="info"/>
+        </article>
+
+        <article>
+            <img src="images/assembly_68_64_constance_registers_memory.png" alt="constants registers memory"/><br/>
+            <img src="images/assembly_68_64_constance_registers_memory2.png" alt="constants registers and memory"/><br/>
+            <img src="images/assembly_68_64_constance_registers_memory3.png" alt="constants registers and memory"/><br/>
+            <img src="images/assembly_68_64_constance_registers_memory4.png" alt="constants registers and memory"/>
+        </article>
+
+        <article>
+            <p>When linking a program that calls functions directly like this, 
+                you may need gcc's "-no-pie" option, to disable the position-independent 
+                executable support.
+            </p>
+            <img src="images/assembly_86_64_Instructions.png" alt="instructions"/><br/>
+            <img src="images/assembly_86_64_Instructions2.png" alt="instructions"/>
+        </article>
+
+        <article>
+            <img src="images/assembly_86_64_StandardIdioms.png" alt="standard idioms"/><br/>
+            <img src="images/assembly_86_64_MemoryAllocation.png" alt="memory allocation"/>
+        </article>
+
+        <article>
+            <p>SSE Floating Point Instructions</p>
+            <br/>
+            <p>
+                There are at least three generations of x86 floating point instructions: <br/>
+                fldpi, the original "floating point register stack", mostly limited to 32-bit machines now.<br/>
+                addss xmm0,xmm2   the SSE instructions<br/>
+                vmovss xmm0,xmm1,xmm2  the VEX-coded instructions<br/>
+                The SSE registers are named "xmm0" through "xmm15".  
+                The SSE instructions can be coded as shown below, or with a "v" in front for the VEX-coded 
+                AVX version, which allows the use of the 32-byte AVX "ymm" registers, and three-operand 
+                (destination, source1, source2) instruction format.<br/>
+
+            </p>
+            <img src="images/assembly_86_64_SSE.png" alt="sse"/><br/>
+            <img src="images/assembly_86_64_SSE2.png" alt="sse"/><br/>
+            <p>The algebra of bitwise operators:</p>
+            <img src="images/assembly_86_64_SSE3.png" alt="sse"/>
+        </article>
+
+        <article>
+            <p>Weird Instructions</p>
+            <p>x86 is ancient, and it has many weird old instructions.  
+                The more useful ones include:</p>
+            <img src="images/assembly_86_64_WeirdInstructions.png" alt="weird instructions"/><br/>
+            <img src="images/assembly_86_64_WeirdInstructions2.png" alt="weird instructions"/>
+        </article>
+
+        <article>
+            <p>Debugging Assembly</p>
+            <img src="images/assembly_86_64_Debugging.png" alt="debugging"/><br/>
+            <img src="images/assembly_86_64_Debugging2.png" alt="debugging 2"/><br/>
+        </article>
+
+    </main>
+
+    <section>
+        <a href="https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf">x64 Cheat Sheet</a>
+        <a href="https://web.stanford.edu/class/cs107/resources/x86-64-reference.pdf">x86-64 Cheat Sheet</a>
+        <a href="https://www.cs.cmu.edu/afs/cs/academic/class/15213-s20/www/recitations/x86-cheat-sheet.pdf">x86-64 Refernce Sheet</a>
+        <a href="https://scadahacker.com/library/Documents/Cheat_Sheets/Programming%20-%20x86%20Instructions%201.pdf">x86 Instructions</a>
+    </section>
+
+  <aside>
+         Sidebar
+     </aside>
+
+  <footer>
+         <p>&copy; Tim's Knowledge Base</p>
+         <address>
+             Contact <a href="mailto:tjohnson082083@gmail.com">me</a>
+     </address>
+ </footer>
