@@ -8,9 +8,8 @@
 
         <link rel="stylesheet" type="text/css" href="style/style.css">
 
-        <script
-            src="script.js"></script>
-        <script src="script.js"></script>
+        <script src="script/script.js"></script>
+        
     </head>
 
     <header>
@@ -36,26 +35,372 @@
         </div>    
     </header>
 
+    <body>        
+        <main>
+            <div>
+                <h1 id="Cisco Modes">Cisco Modes</h1>
+                <img src="images/CiscoModes.png" alt="cisco modes"/>
+            </div>
             
-    <main>
-        
+            <div>
+                <h1 id="Keyboard Shortcuts">Keyboard Shortcuts</h1>
+                <img src="images/CiscoKeyboardShortcuts.png" alt="cisco keyboard shortcuts"/>
+            </div>
 
-    </main>
+            <div>
+                <h1 id="Device Configuration">Device Configuration</h1>
+                <h3><span style="text-decoration: underline;">Switch</span></h3>
+                <img src="images/CiscoSwitchConfig.png" alt="cisco switch config"/><br/>
+                <img src="images/CiscoSwitchConfig2.png" alt="cisco switch config continued"/><br/>
+                <hr/>
+                <h3><span style="text-decoration: underline;">Router</span></h3>
+                <img src="images/CiscoRouterConfig.png" alt="cisco router config"/><br/>
+                <img src="images/CiscoRouterConfig2.png" alt="cisco router config2"/><br/>
+                <img src="images/CiscoRouterConfig3.png" alt="cisco router config3"/><br/>
+                
+                <p>The following guidelines are commands and their descriptions:</p>
+                <h2><span style="text-decoration: underline;">Configure Networking</span></h2>
+                <p>The following includes basic configure networking commands and their descriptions:</p>
+                <p><strong>Enter interface configuration mode:</strong> <br/>(config)# interface g1/0</p>
+                <p><strong>Human-readable link description</strong>: <br/>(config-if)# description Link to Some host</p>
+                <p><strong>Add IPv4 address to interface</strong>: <br/>(config-if)# ip address 10.23.42.5 255.255.0.0</p>
+                <p><strong>Add IPv6 address to interface</strong>: <br/>(config-if)# ipv6 address 2001:41d0:8:e115::ccc/64</p>
+                <p><strong>Add IPv4 address to interface</strong>: <br/>(config-if)# ip address 10.23.42.5 255.255.0.0</p>
+                <p><strong>Add IPv6 address to interface</strong>: <br/>(config-if)# ipv6 address 2001:41d0:8:e115::ccc/64</p>
+                <p><strong>Overwrite MAC address</strong>: <br/>(config-if)# mac address 1234.5678.90AB</p>
+                <p><strong>Remove MAC overwrite</strong>: <br/>(config-if)# no mac address</p>
+                <p><strong>Add IPv6 address based on MAC to interface</strong>: <br/>(config-if)# ipv6 address 2001:41d0:8:e115::/64 eui-64</p>
+                <p><strong>Get IPv4 address via dhcp</strong>: <br/>(config-if)# ip address dhcp</p>
+                <p><strong>Get IPv6 address (and default route) via autoconfig</strong>: <br/>(config-if)# ipv6 address autoconfig [default]</p>
+                <p><strong>Set hostname transmitted as dhcp client to SW2</strong>: <br/>(config-if)# ip dhcp client client-id asccii SW2</p>
+                <p><strong>Configure both interfaces at once</strong>: <br/>(config)# interface g1/0 - 2</p>
+                <p><strong>En- or Disable interface. Often shutdown is the default</strong>: <br/>(config-if)# [no] shutdown</p>
+                <p><strong>Set 10.23.42.1 as the default gateway</strong>: <br/>(config)# ip default-gateway 10.23.42.1</p>
+                <p><strong>Add static route via next hop or interface</strong>: <br/>(config)# ip route 10.20.30.0 255.255.255.0 {1.2.3.4,e0/0} [ad]</p>
+                <p><strong>You can also set both</strong>: <br/>(config)# ipv6 route 2001:41d0:8:e115::/64 [g1/1] [next hop]</p>
+                <p><strong>Create a static host entry on this device</strong>: <br/>(config)# ip host the-space.agency 178.32.222.21</p>
+                <p><strong>Globally enable ipv6 routing</strong>: <br/>(config)# ipv6 unicast-routing</p>
+            </div>
 
-    <section>
-        <a href="https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf">x64 Cheat Sheet</a>
-        <a href="https://web.stanford.edu/class/cs107/resources/x86-64-reference.pdf">x86-64 Cheat Sheet</a>
-        <a href="https://www.cs.cmu.edu/afs/cs/academic/class/15213-s20/www/recitations/x86-cheat-sheet.pdf">x86-64 Refernce Sheet</a>
-        <a href="https://scadahacker.com/library/Documents/Cheat_Sheets/Programming%20-%20x86%20Instructions%201.pdf">x86 Instructions</a>
-    </section>
+            <div>
+                <h1 id="Privilege Commands">Privilege Commands</h1>
+                <img src="images/CiscoPrivilegeCommands.png" alt=""/>
+            </div>
 
-  <aside>
-         Sidebar
-     </aside>
+            <div>
+                <h3>Basic Network Troubleshooting</h3>
+            </div>
 
-  <footer>
-         <p>&copy; Tim's Knowledge Base</p>
-         <address>
-             Contact <a href="mailto:tjohnson082083@gmail.com">me</a>
-     </address>
- </footer>
+            <div>
+                <h3>Troubleshoot Networks with Span</h3>
+            </div>
+
+            <div>
+                <h2>Port Security</h2>
+            </div>
+
+            <div>
+                <h3>Port security terms of violation:</h3>
+            </div>
+
+            <div>
+                <h3>Troubleshooting Port Security</h3>
+            </div>
+
+            <div>
+                <h3>Layer2 Switch Vlan Config</h3>
+            </div>
+
+            <div>
+                <h3>Layer3 Switch Vlan Config</h3>
+            </div>
+
+            <div>
+                <h3>Router (on a Stick) Vlan Config</h3>
+            </div>
+
+            <div>
+                <p>Troubleshoot Vlans on a Switch</p>
+            </div>
+
+            <div>
+                <h2>STP</h2>
+            </div>
+
+            <div>
+                <h3>Troubleshoot STP</h3>
+            </div>
+
+            <div>
+                <h3>Etherchannel (Link Aggregation)</h3>
+            </div>
+
+            <div>
+                <h3>Troubleshoot Etherchannel (Link Aggregation)</h3>
+            </div>
+
+            <div>
+                <h3>Configure a Serial</h3>
+            </div>
+
+            <div>
+                <h2>ACLs</h2>
+            </div>
+
+            <div>
+                <h3>Interface ACLs</h3>
+            </div>
+
+            <div>
+                <h3>Troubleshooting ACLs</h3>
+            </div>
+
+            <div>
+                <h2>NAT</h2>
+            </div>
+
+            <div>
+                <h3>SNAT</h3>
+            </div>
+
+            <div>
+                <h3>DNAT</h3>
+            </div>
+
+            <div>
+                <h2>PAT</h2>
+            </div>
+
+            <div>
+                <h3>Troubleshooting NAT</h3>
+            </div>
+
+            <div>
+                <h2>DHCP Server</h2>
+            </div>
+
+            <div>
+                <h3>Troubleshooting DHCP</h3>
+            </div>
+
+            <div>
+                <h2>HSRP</h2>
+            </div>
+
+
+            <div>
+                <h2>SLAs</h2>
+            </div>
+
+            <div>
+                <h3>Troubleshooting HSRP</h3>
+            </div>
+
+            <div>
+                <h2>Device Management</h2>
+                <p><strong>Set hostname to R1</strong>:<br/> (config)# hostname R1</p>
+                <p><strong>Set enable password</strong>:<br/> (config)# enable password</p>
+                <p><strong>Same but with hashing</strong>:<br/> (config)# enable secret</p>
+                <p><strong>Very weak encryption of passwords</strong>:<br/> (config)# service password-encryption</p>
+                <p><strong>Copy something from flash to tftp. Wizard asks for details. It works both ways</strong>:<br/> # copy flash0: tftp:</p>
+                <p><strong># copy running-config startup-config</strong>:<br/> # write</p>
+                <p><strong># erase startup-config</strong>:<br/> # write erase</p>
+                <p><strong>Restart the device and load the startup-config</strong>:<br/> # reload</p>
+                <p><strong>Copy running-config to a tftp server. (interactive):</strong><br/> # copy running-config tftp:</p>
+                <p><strong>Merge source config into the running config</strong>:<br/> # copy running-config</p>
+                <p><strong>Initial configuration dialog</strong>:<br/> # setup</p>
+                <p><strong>ios, bootloader and hardware infos, uptime, configuration register</strong>:<br/> # show version</p>
+            </div>
+
+            <div>
+                <h2>Firmware Management</h2>
+                <p><strong>Boot filename.bin from flash memory</strong>:<br/> (config)# boot system flash:filename.bin</p>
+                <p><strong>Boot filename.bin from tftp</strong>:<br/> (config)# boot system tftp://10.20.30.40/filename.bin</p>
+                <p><strong>Boot ROM monitor as a backup</strong>:<br/> (config)# boot system rom</p>
+                <p><strong>Set the 16bit Configuration Register value used after reboot</strong>:<br/> (config)# config-register 0x2342</p>
+                <p><strong>Lists available file systems</strong>:<br/> # show file systems</p>
+                <p><strong>List fs content and free space</strong>:<br/> # show flash0:</p>
+            </div>
+
+            <div>
+                <h2>License Management</h2>
+                <p><strong>Save a copy of all licenses</strong>:<br/> # license save flash:licenses.lic</p>
+                <p><strong>Install a license</strong>:<br/> # license install flash0:license.xml</p>
+                <p><strong>Activate evaluation right-to-use license</strong>:<br/> (config)# license boot module technology-package</p>
+                <p><strong>Reboot to activate the package and right to use license</strong>:<br/> # reload</p>
+                <p><strong>Deactivate a technology-package</strong>:<br/> (config)# license boot module technology-package disable</p>
+                <p><strong>Reboot without that technology-package</strong>:<br/> # reload</p>
+                <p><strong>Remove license from the license storage</strong>:<br/> # license clear</p>
+                <p><strong>Remove the no longer needed line from the config</strong>:<br/> (config)# no license boot module technology-package disable</p>
+                <p><strong>Active licenses</strong>:<br/> # show licenses</p>
+                <p><strong>Technology pack and feature licenses supported</strong>:<br/> # show license feature</p>
+                <p><strong>Product id and serial number needed to order licenses</strong>:<br/> # show license udi</p>
+            </div>
+
+            <div>
+                <h2>Reset Password</h2>
+                <p><strong>Show the configuration register in rom monitor</strong>:<br/> &gt; confreq</p>
+                <p><strong>Set the configuration register in rom monitor to not load startup-conf</strong>:<br/> &gt; confreq 0x2142</p>
+                <p><strong>Reboot in rom monitor</strong>:<br/> &gt; reset</p>
+                <p><strong>Overwrite forgotten password</strong>:<br/> (config)# enable secret foobar</p>
+                <p><strong>Do load startup-config after boot again</strong>:<br/> (config)# config-register 0x2102</p>
+
+            </div>
+
+            <div>
+                <h2>Telnet / Console</h2>
+                <p><strong>Make sure to include legal terms to sound smart</strong>:<br/>  (config)# banner login "Insert snarky banner."</p>
+                <p><strong>Set Login Banner</strong>:<br/>  (config)# banner motd "Insert snarky banner."</p>
+                <p><strong>Enter config mode for vty 0 to 4 (up to 15 allowed</strong>):<br/> (config)# line vty 0 4</p>
+                <p><strong>Enter config mode for the console port</strong>:<br/> (config)# line console 0</p>
+                <p><strong>Require login on telnet/console connection</strong>:<br/> (config-line)# login</p>
+                <p><strong>Enable Telnet and set vty login password</strong>:<br/> (config-line)# password</p>
+                <p><strong>Set ACL to limit inbound IPs allowed to access vty</strong>:<br/> (config-line)# access-class 10 in</p>
+                <p><strong>Overwrite the used ACL, only one ACL per vty + direction</strong>!:<br/> (config-line)# access-class 42 in</p>
+                <p><strong>Autologout after 10 Minutes</strong>:<br/> (config-line)# exec-timeout 10</p>
+                <p><strong>Require login on telnet/console connection via local users</strong>:<br/> (config-line)# login local</p>
+                <p><strong>Create local user with encrypted password</strong>:<br/> (config)# username h.acker secret C1sco123</p>
+            </div>
+
+            <div>
+                <h2>SSH</h2>
+                <p><strong>Required to generate SSH keys:</strong><br/>  (config)# hostname Fooba</p>
+                <p><strong>Required to generate SSH keys</strong>:<br/>  (config)# ip domain-name example.com</p>
+                <p><strong>Generate keys like it's 1995! Potentially takes forever</strong>:<br/>  (config)# crypto key generate rsa modulus 2048</p>
+                <p><strong>Force SSHv2</strong>:<br/>  (config)# ip ssh version 2</p>
+                <p><strong>Force ssh, disable telnet</strong>:<br/>  (config-line)# transport input ssh</p>
+                <p><strong>SSH version, timeout time, auth retries</strong>:<br/>  # show ip ssh</p>
+                <p><strong>List of active connections</strong>:<br/>  # show ssh</p>
+            </div>
+
+            <div>
+                <h2>Clock</h2>
+                <p><strong>Show time and date</strong>:<br/> # show clock</p>
+                <p><strong>Update clock</strong>:<br/> (config)# clock set 23:50:42 10 Jan 2017</p>
+                <p><strong>Update timezone to EST</strong>:<br/> (config)# clock timezone EST 0</p>
+                <p><strong>Configure upstream ntp server</strong>:<br/> (config)# ntp server 10.20.30.40</p>
+                <p><strong>Enable ntp server</strong>:<br/> (config)# ntp master [stratum]</p>
+                <p><strong>ntp connections</strong>:<br/> # show ntp associations</p>
+            </div>
+
+            <div>
+                <h2>Disable Unused Services</h2>
+                <p><strong>Show open ports</strong>:<br/> # show control-plane host open-ports</p>
+                <p><strong>Stop the http server (but not https):</strong><br/> (config)# no ip http server</p>
+                <p><strong>Stop CDP</strong>:<br/> (config)# no cdp enable</p>
+            </div>
+
+            <div>
+                <h2>Radius</h2>
+                <p><strong>Local backup user</strong>:<br/> (config)# username password</p>
+                <p><strong>Enable aaa services</strong>:<br/> (config)# aaa new-model</p>
+                <p><strong>Add and define Radius conf</strong>:<br/> (config)# radius server</p>
+                <p><strong>Use this hostname/ip of server</strong>:<br/> (config-radius-server)# address ipv4 [auth-port ]</p>
+                <p><strong>Radius PSK</strong>:<br/> (config-radius-server)# key</p>
+                <p><strong>Create authentication group</strong>:<br/> (config)# aaa group server radius</p>
+                <p><strong>Using the radius config</strong>:<br/> (config-sg-radius)# server name</p>
+                <p><strong>Allow that group and local users in</strong>:<br/> (config)# aaa authentication login group local</p>
+
+            </div>
+
+            <div>
+                <h2>TACACS+</h2> 
+                <p><strong>Local backup user</strong>:<br/> (config)# username password</p>
+                <p><strong>Enable aaa services</strong>:<br/> (config)# aaa new-model</p>
+                <p><strong>Add and define TACACS conf</strong>:<br/> (config)# tacacs server</p>
+                <p><strong>Multiple possible</strong>:<br/> (config)# aaa group server tacacs+</p>
+                <p><strong>Allow that group and local users in</strong>:<br/> (config)# aaa authentication login group local</p>
+            </div>
+
+            <div>
+                <h2>Syslog</h2>
+                <p><strong>Log to this syslog server (name or ip):</strong><br/> # logging 10.20.30.40</p>
+                <p><strong>Only log messages with min. informational sev</strong>:<br/> # logging trap informational</p>
+            </div>
+
+            <div>
+                <h2>SNMP</h2>
+                <p><strong>Contact email</strong>:<br/> (config)# snmp-server contact&nbsp;<a href="mailto:admin@example.com">admin@example.com</a></p>
+                <p><strong>Where is the device</strong>:<br/> (config)# snmp-server location RZ-Hamburg</p>
+                <p><strong>Add community</strong>:<br/> (config)# snmp-server community [ro, rw]</p>
+                <p><strong>SNMP notifications recipient</strong>:<br/> (config)# snmp-server host 10.20.30.4</p>
+            </div>
+
+            <div>
+                <h2>CDP - Cisco Discovery Protocol</h2>
+                <p><strong>Enables cdp globaly and on all interfaces (default</strong>):<br/> # [no] cdp run</p>
+                <p><strong>Enable cdp on an interface</strong>:<br/> # (config-if)# [no] cdp enable</p>
+                <p><strong>List connected cisco devices (name, local/remote port, [ip] ..):</strong><br/> # show cdp neighbors [detail]</p>
+            </div>
+
+            <div>
+                <h2>LLDP - Link Layer Discovery Protocol</h2>
+                <p><strong>Enables lldp globaly and on all interfaces</strong>:<br/> # [no] lldp run</p>
+                <p><strong>Enable lldp packet transmission on interface</strong>:<br/> (config-if)# [no] lldp transmit</p>
+                <p><strong>Enable lldp packet reception on interace</strong>:<br/> (config-if)# [no] lddp receive</p>
+            </div>
+
+            <div>
+                <h2>PPP</h2>
+                <p><strong>Create users for pap auth</strong>:<br/> (config)# username fnord password pass</p> 
+                <p><strong>Baud rate. Only on DCE cable</strong>:<br/> (config-if)# clock rate 125000</p><br/>
+                <p><strong>Logical speed used for routing cost calc, RSVP</strong>:<br/> (config-if)# bandwidth 125</p><br/>
+                <p><strong>Default is HDLC</strong>:<br/> (config-if)# encapsulation ppp</p><br/>
+                <p><strong>Require remote to authenticate via pap</strong>:<br/> (config-if)# ppp authentication pap</p><br/>
+                <p><strong>Authenticate to remote pap</strong>:<br/> (config-if)# ppp pap sent-username fnord password pass</p><br/>
+                <p><strong>Required for CHAP, used as chap client username</strong>:<br/> (config)# hostname routy1</p><br/>
+                <p><strong>Create users for chap auth for routy2</strong>:<br/> (config)# username routy2 password foobar</p><br/>
+                <p><strong>Remove in favor of chap</strong>:<br/> (config-if)# no ppp authentication pap</p><br/>
+                <p><strong>Remove in favor of chap</strong>:<br/> (config-if)# no ppp pap sent-username fnord password pass</p><br/>
+                <p><strong>Require remote to authenticate via chap</strong>:<br/> (config-if)# ppp authentication chap</p><br/>
+            </div>
+
+           
+
+            <div>
+                <h1 id="IPv4 to Binary">IPv4 to Binary</h1>
+                <label for="ipv4">Network Address:</label>
+                <input type="text" id="Ipv4Network">
+                <button type="submit" onclick="convertToBinaryNetwork(document.getElementById('Ipv4Network'))">Submit</button>
+                <br/>
+                <h3 id="ipv4AnsNetwork"></h3>
+
+                <label for="ipv4">Host Address:</label>
+                <input type="text" id="Ipv4Host">
+                <button type="submit" onclick="convertToBinaryHost(document.getElementById('Ipv4Host'))">Submit</button>
+                <br/>
+                <h3 id="ipv4AnsHost"></h3>
+            </div>
+
+            <div>
+                <h1 id="IPv6 to Binary">IPv6 to Binary</h1>
+
+                <label for="ipv6">Network Address:</label>
+                <input type="text" id="Ipv6Network">
+                <button type="submit" onclick="convertIPv6NetworkToBinary(document.getElementById('Ipv6Network'))">Submit</button>
+                <br/>
+                <h3 id="ipv6AnsNetwork"></h3>
+
+                <label for="ipv6">Host Address:</label>
+                <input type="text" id="Ipv6Host">
+                <button type="submit" onclick="convertIPv6HostToBinary(document.getElementById('Ipv6Host'))">Submit</button>
+                <br/>
+                <h3 id="ipv6AnsHost"></h3>
+            </div>
+        </main>
+
+        <section>
+            <a href="https://www.infosecacademy.io/blog/ccna-cheat-sheet/">CCNA Cheat Sheet</a>
+        </section>
+
+         <aside>
+            Sidebar
+        </aside>
+
+        <footer>
+                <p>&copy; Tim's Knowledge Base</p>
+                <address>
+                    Contact <a href="mailto:tjohnson082083@gmail.com">me</a>
+            </address>
+        </footer>
+    </body>
