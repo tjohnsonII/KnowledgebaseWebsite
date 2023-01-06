@@ -103,14 +103,14 @@
                 <p><strong>Disable all previously enabled debugs</strong>: # undebug all</p>
                 <p><strong>Show neighbor discovery table cache</strong>: # show ipv6 neighbors</p>
             <div>
-                <h3>Troubleshoot Networks with Span</h3>
+                <h3 id="Troubleshoot Networks with Span">Troubleshoot Networks with Span</h3>
                 <p><strong>Define SPAN #23 output as g1/2</strong>: (config)# monitor session 23 destination interface g1/2</p>
                 <p><strong>Define SPAN #23 input as g1/1</strong>: (config)# monitor session 23 source interface g1/1 {rx,tx,both}</p>
                 <p><strong>Show all configured SPANs</strong>: # show monitor</p>
             </div>
 
             <div>
-                <h2>Port Security</h2>
+                <h2 id="Port Security">Port Security</h2>
                 <p><strong>En/Disable port-security</strong>: (config-if)# [no] switchport port-security</p>
                 <p><strong>Number of allowed MACs</strong>: (config-if)# switchport port-security maximum 1</p>
                 <p><strong>Manually allow a MAC on this port</strong>: (config-if)# switchport port-security mac-address 1234.5678.9abc</p>
@@ -122,7 +122,7 @@
             </div>
 
             <div>
-                <h3>Port security terms of violation:</h3>
+                <h3 id="Port security terms of violation:">Port security terms of violation:</h3>
                 <ul style="list-style-type: disc;">
                     <li>Protect: drops packets, no alerts</li>
                     <li>Restrict: drops packets, security violation count</li>
@@ -131,14 +131,14 @@
             </div>
 
             <div>
-                <h3>Troubleshooting Port Security</h3>
+                <h3 id="Troubleshooting Port Security">Troubleshooting Port Security</h3>
                 <p><strong>Port status, violation mode, max/total MACs and more</strong>: # show port-security [interface g1/1]</p>
                 <p><strong>Secure MACs on ports</strong>: # show port-security address</p>
                 <p><strong>Check if auto-recovery is enabled (disabled by default):</strong> # show errdisable recovery</p>
             </div>
 
             <div>
-                <h3>Layer2 Switch Vlan Config</h3>
+                <h3 id="Layer2 Switch Vlan Config">Layer2 Switch Vlan Config</h3>
                 <p><strong>[delete vlan or] create vlan and enter config-vlan mode</strong>: (config)# [no] vlan 23</p>
                 <p><strong>Name this vlan TelephoneSanitizer:</strong> (config-vlan)# name TelephoneSanitizer</p>
                 <p><strong>Make frames out this port untagged:</strong> (config-if)# switchport mode access</p>
@@ -149,7 +149,7 @@
             
 
             <div>
-                <h3>Layer3 Switch Vlan Config</h3>
+                <h3 id="Layer3 Switch Vlan Config">Layer3 Switch Vlan Config</h3>
                 <p><strong>Enter interface config mode</strong>: (config)# interface vlan 23</p>
                 <p><strong>Set device ip in vlan 23</strong>: (config-if)# ip address 1.2.3.4 255.255.255.0</p>
                 <p><strong>Virtual interfaces are disabled by default</strong>: (config-if)# no shutdown</p>
@@ -157,14 +157,14 @@
             </div>
 
             <div>
-                <h3>Router (on a Stick) Vlan Config</h3>
+                <h3 id="Router (on a Stick) Vlan Config">Router (on a Stick) Vlan Config</h3>
                 <p><strong>Create subinterface g1/1.10 on g1/1</strong>: (config)# interface g1/1.10</p>
                 <p><strong>Enable ieee 802.1Q vlan tagging with vlan 10 on the subinterface:</strong> (config-subif)# encapsulation dot1q 10</p>
                 <p><strong>Show vlans and their trunk interfaces</strong>: # show vlans</p>
             </div>
 
             <div>
-                <p>Troubleshoot Vlans on a Switch</p>
+                <p id="Troubleshoot Vlans on a Switch">Troubleshoot Vlans on a Switch</p>
                 <p><strong>Show vlan settings for all switch ports</strong>: # show vlan [{id 23, name TelephoneSanitizer}] [brief]</p>
                 <p><strong>Verify mode and vlan of g1/1</strong>: # show interfaces g1/1 switchport</p>
                 <p><strong>Show trunk settings and state</strong>: # show interfaces g1/1 trunk</p>
@@ -174,7 +174,7 @@
             </div>
 
             <div>
-                <h2>STP</h2>
+                <h2 id="STP">STP</h2>
                 <p>Spanning Tree Protocol (STP) (802.1D) blocks ports that have repetitive links in order to prevent layer 2 loops and broadcast storms.</p>
                 <p><strong>Make this device the primary/secondary root bridge</strong>: (config)# spanning-tree vlan 1 root {primary, secondary}</p>
                 <p><strong>Enable bpdu guard for all portfast enable interfaces</strong>: (config)# spanning-tree portfast bpduguard default</p>
@@ -185,7 +185,7 @@
             </div>
 
             <div>
-                <h3>Troubleshoot STP</h3>
+                <h3 id="Troubleshoot STP">Troubleshoot STP</h3>
                 <p><strong>Who's the root and how do I get there?</strong> # show spanning-tree [vlan 1]</p>
                 <p><strong>Is global portfast/bpduguard configured?</strong> # show spanning-tree summary</p>
                 <p><strong>Is portfast/bpduguard configured on this interface?</strong> # show running-config interface g1/1</p>
@@ -193,7 +193,7 @@
             </div>
 
             <div>
-                <h3>Etherchannel (Link Aggregation)</h3>
+                <h3 id="Etherchannel (Link Aggregation)">Etherchannel (Link Aggregation)</h3>
                 <p><strong>Configure g1/1 and g1/2 at the same time</strong>: (config)# interface range g1/1 - 2</p>
                 <p><strong>Add both interfaces to etherchannel 1 (PAgP):</strong> (config-if-range)# channel-group 1 mode {auto, desirable}</p>
                 <p><strong>Add both interfaces to etherchannel 1 (LACP):</strong> (config-if-range)# channel-group 1 mode {active, passive}</p>
@@ -204,14 +204,14 @@
             </div>
 
             <div>
-                <h3>Troubleshoot Etherchannel (Link Aggregation)</h3>
+                <h3 id="Troubleshoot Etherchannel (Link Aggregation)">Troubleshoot Etherchannel (Link Aggregation)</h3>
                 <p><strong>Includes the combined bandwidth and members as extra info:</strong> # show interface port-channel 1</p>
                 <p><strong>Show etherchannel protocols and members as a list</strong>: # show etherchannel summary</p>
                 <p><strong>Show per member state and stats</strong>: # show etherchannel port-channel 1</p>
             </div>
 
             <div>
-                <h3>Configure a Serial</h3>
+                <h3 id="Configure a Serial">Configure a Serial</h3>
                 <p>Layer 1 link speed is ordered by a CSU/DSU, in a lab without an external CSU/DSU and using a DTE (Data Termianl Equipment) cable and DCE (Data Communications Equipment) cable.</p>
                 <p><strong>Set clock rate on DCE router side to 128 kbps</strong>: (config-if)# clock rate 128000</p>
                 <p><strong>Verify clock rate for serial interface 1/0</strong>: (config)# show controllers serial 1/0</p>
@@ -219,7 +219,7 @@
             </div>
 
             <div>
-                <h2>ACLs</h2>
+                <h2 id="ACLs">ACLs</h2>
                 <p><strong>Create ACL #23 or append a rule to ACL #23, allow 1.2.x.x</strong>: (config)# access-list 23 permit 1.2.3.4 [0.0.255.255]</p>
                 <p><strong>Delete entire ACL #23</strong>: (config)# no access-list 23</p>
                 <p><strong>Renumber ACL Rules, put first on #5, increment by 10</strong>: (config)# ip[v6] access-list resequence local_only 5 10</p>
@@ -231,7 +231,7 @@
             </div>
 
             <div>
-                <h3>Interface ACLs</h3>
+                <h3 id="Interface ACLs">Interface ACLs</h3>
                 <p><strong>Enter if-config mode for g1/1</strong>: (config)# inter g1/1</p>
                 <p><strong>Apply ACL #23 to outgoing packets, not send by the router</strong>: (config-if)# ip access-group 23 out</p>
                 <p><strong>Apply ACL #42 to incoming packets</strong>: (config-if)# ip access-group 42 in</p>
@@ -242,13 +242,13 @@
             </div>
 
             <div>
-                <h3>Troubleshooting ACLs</h3>
+                <h3 id="Troubleshooting ACLs">Troubleshooting ACLs</h3>
                 <p>Show all configured ACLs: # show [ip[v6]] access-lists</p>
                 <p>Display all rules in ACL #10 and how often they matched: # show access-list 10</p>
             </div>
 
             <div>
-                <h2>NAT</h2>
+                <h2 id="NAT">NAT</h2>
                 <p>Local addresses are inside the network. Global addresses are outside the network.</p>
                 <ul style="list-style-type: disc;">
                     <li>Inside local: IP address assigned to a host inside the newtork, non-routable</li>
@@ -266,12 +266,12 @@
             </div>
 
             <div>
-                <h3>SNAT</h3>
+                <h3 id="SNAT">SNAT</h3>
                 <p><strong>SNAT - statically map an internal ip 1:1 to an external ip</strong>: (config)# ip nat inside source static 10.10.23.2 1.2.3.5</p>
             </div>
 
             <div>
-                <h3>DNAT</h3>
+                <h3 id="DNAT">DNAT</h3>
                 <p><strong>Create an ACL identifying 10.10.23/24</strong>: (config)# access-list 42 permit 10.10.23.0 0.0.0.255</p>
                 <p><strong>Create an IP Address Pool for NATing</strong>: (config)# ip nat pool POOL 1.2.3.5 1.2.3.10 netmask 255.255.255.240</p>
                 <p><strong>DNAT IPs matching ACL #42 1:1 with IPs from nat pool 'POOL'</strong>: (config)# ip nat inside source list 42 pool POOL</p>
@@ -279,20 +279,20 @@
             </div>
 
             <div>
-                <h2>PAT</h2>
+                <h2 id="PAT">PAT</h2>
                 <p>Create an ACL identifying 10.10/16: (config)# access-list 10 permit 10.10.0.0 0.0.255.255</p>
                 <p>PAT IPs matching ACL #10 many:1 with g1/1s public IP: (config)# ip nat inside source list 10 interface g1/1 overload</p>
             </div>
 
             <div>
-                <h3>Troubleshooting NAT</h3>
+                <h3 id="Troubleshooting NAT">Troubleshooting NAT</h3>
                 <p><strong>Show nat table entries if any</strong>: # show ip nat translations</p>
                 <p><strong>Show translations are actually used and interfaces are marked in/out correctly</strong>: # show ip nat statistics</p>
                 <p><strong>Clear dynamic translations. Doesn't mess with SNAT!:</strong> # clear ip nat translation {ip, *}</p>
             </div>
 
             <div>
-                <h2>DHCP Server</h2>
+                <h2 id="DHCP Server">DHCP Server</h2>
                 <p><strong>Don't distribute these IPs in leases</strong>: (config)# ip dhcp excluded-address 10.30.4.1 10.30.4.100</p>
                 <p><strong>Create and/or enter dhcp config for pool 'PCs'</strong>: (config)# ip dhcp pool PCs</p>
                 <p><strong>Define pool addresses</strong>: (dhcp-config)# network 10.30.4.0 /24</p>
@@ -304,7 +304,7 @@
             </div>
 
             <div>
-                <h3>Troubleshooting DHCP</h3>
+                <h3 id="Troubleshooting DHCP">Troubleshooting DHCP</h3>
                 <p><strong>Show dhcp lease information</strong>: # show dhcp lease</p>
                 <p><strong>Show pool size and addresses in use</strong>: # show ip dhcp pool</p>
                 <p><strong>Show which mac got which ip</strong>: # show ip dhcp binding</p>
@@ -313,7 +313,7 @@
             </div>
 
             <div>
-                <h2>HSRP</h2>
+                <h2 id="HSRP">HSRP</h2>
                 <p><strong>Join HSRP Group</strong>: (config-if)# standby [group-number] ip</p>
                 <p><strong>(optional) Set prio of this router</strong>: (config-if)# standby [group-number] priority</p>
                 <p><strong>(optional) Preempt other routers when this router becomes active</strong>: (config-if)# standby [group-number] preempt</p>
@@ -322,13 +322,13 @@
             </div>
 
             <div>
-                <h3>Troubleshooting HSRP</h3>
+                <h3 id="Troubleshooting HSRP">Troubleshooting HSRP</h3>
                 <p><strong>HSRP Groups, their VIPs, state, active router, standby router, preemption</strong>: # show standby</p>
             </div>
 
 
             <div>
-                <h2>SLAs</h2>
+                <h2 id="SLAs">SLAs</h2>
                 <p><strong>HSRP Groups, their VIPs, state, active router, standby router, preemption</strong>: # show standby</p>
                 <p><strong>Define icmp-echo test</strong>: (config-ip-sla)# icmp-echo 1.2.3.4</p>
                 <p><strong>Frequency in seconds</strong>: (config-ip-sla)# frequency 42</p>
@@ -336,12 +336,12 @@
             </div>
 
             <div>
-                <h3>Troubleshooting SLAs</h3>
+                <h3 id="Troubleshooting SLAs">Troubleshooting SLAs</h3>
                 <p><strong>Show all configured ip sla configs</strong>: # show ip sla configuration</p>
             </div>
 
             <div>
-                <h2>Device Management</h2>
+                <h2 id="Device Management">Device Management</h2>
                 <p><strong>Set hostname to R1</strong>:<br/> (config)# hostname R1</p>
                 <p><strong>Set enable password</strong>:<br/> (config)# enable password</p>
                 <p><strong>Same but with hashing</strong>:<br/> (config)# enable secret</p>
@@ -357,7 +357,7 @@
             </div>
 
             <div>
-                <h2>Firmware Management</h2>
+                <h2 id="Firmware Management">Firmware Management</h2>
                 <p><strong>Boot filename.bin from flash memory</strong>:<br/> (config)# boot system flash:filename.bin</p>
                 <p><strong>Boot filename.bin from tftp</strong>:<br/> (config)# boot system tftp://10.20.30.40/filename.bin</p>
                 <p><strong>Boot ROM monitor as a backup</strong>:<br/> (config)# boot system rom</p>
@@ -367,7 +367,7 @@
             </div>
 
             <div>
-                <h2>License Management</h2>
+                <h2 id="License Management">License Management</h2>
                 <p><strong>Save a copy of all licenses</strong>:<br/> # license save flash:licenses.lic</p>
                 <p><strong>Install a license</strong>:<br/> # license install flash0:license.xml</p>
                 <p><strong>Activate evaluation right-to-use license</strong>:<br/> (config)# license boot module technology-package</p>
@@ -382,7 +382,7 @@
             </div>
 
             <div>
-                <h2>Reset Password</h2>
+                <h2 id="Reset Password">Reset Password</h2>
                 <p><strong>Show the configuration register in rom monitor</strong>:<br/> &gt; confreq</p>
                 <p><strong>Set the configuration register in rom monitor to not load startup-conf</strong>:<br/> &gt; confreq 0x2142</p>
                 <p><strong>Reboot in rom monitor</strong>:<br/> &gt; reset</p>
@@ -392,7 +392,7 @@
             </div>
 
             <div>
-                <h2>Telnet / Console</h2>
+                <h2 id="Telnet / Console">Telnet / Console</h2>
                 <p><strong>Make sure to include legal terms to sound smart</strong>:<br/>  (config)# banner login "Insert snarky banner."</p>
                 <p><strong>Set Login Banner</strong>:<br/>  (config)# banner motd "Insert snarky banner."</p>
                 <p><strong>Enter config mode for vty 0 to 4 (up to 15 allowed</strong>):<br/> (config)# line vty 0 4</p>
@@ -407,7 +407,7 @@
             </div>
 
             <div>
-                <h2>SSH</h2>
+                <h2 id="SSH">SSH</h2>
                 <p><strong>Required to generate SSH keys:</strong><br/>  (config)# hostname Fooba</p>
                 <p><strong>Required to generate SSH keys</strong>:<br/>  (config)# ip domain-name example.com</p>
                 <p><strong>Generate keys like it's 1995! Potentially takes forever</strong>:<br/>  (config)# crypto key generate rsa modulus 2048</p>
@@ -418,7 +418,7 @@
             </div>
 
             <div>
-                <h2>Clock</h2>
+                <h2 id="Clock">Clock</h2>
                 <p><strong>Show time and date</strong>:<br/> # show clock</p>
                 <p><strong>Update clock</strong>:<br/> (config)# clock set 23:50:42 10 Jan 2017</p>
                 <p><strong>Update timezone to EST</strong>:<br/> (config)# clock timezone EST 0</p>
@@ -428,14 +428,14 @@
             </div>
 
             <div>
-                <h2>Disable Unused Services</h2>
+                <h2 id="Disable Unused Services">Disable Unused Services</h2>
                 <p><strong>Show open ports</strong>:<br/> # show control-plane host open-ports</p>
                 <p><strong>Stop the http server (but not https):</strong><br/> (config)# no ip http server</p>
                 <p><strong>Stop CDP</strong>:<br/> (config)# no cdp enable</p>
             </div>
 
             <div>
-                <h2>Radius</h2>
+                <h2 id="Radius">Radius</h2>
                 <p><strong>Local backup user</strong>:<br/> (config)# username password</p>
                 <p><strong>Enable aaa services</strong>:<br/> (config)# aaa new-model</p>
                 <p><strong>Add and define Radius conf</strong>:<br/> (config)# radius server</p>
@@ -448,7 +448,7 @@
             </div>
 
             <div>
-                <h2>TACACS+</h2> 
+                <h2 id="TACACS">TACACS+</h2> 
                 <p><strong>Local backup user</strong>:<br/> (config)# username password</p>
                 <p><strong>Enable aaa services</strong>:<br/> (config)# aaa new-model</p>
                 <p><strong>Add and define TACACS conf</strong>:<br/> (config)# tacacs server</p>
@@ -457,13 +457,13 @@
             </div>
 
             <div>
-                <h2>Syslog</h2>
+                <h2 id="Syslog">Syslog</h2>
                 <p><strong>Log to this syslog server (name or ip):</strong><br/> # logging 10.20.30.40</p>
                 <p><strong>Only log messages with min. informational sev</strong>:<br/> # logging trap informational</p>
             </div>
 
             <div>
-                <h2>SNMP</h2>
+                <h2 id="SNMP">SNMP</h2>
                 <p><strong>Contact email</strong>:<br/> (config)# snmp-server contact&nbsp;<a href="mailto:admin@example.com">admin@example.com</a></p>
                 <p><strong>Where is the device</strong>:<br/> (config)# snmp-server location RZ-Hamburg</p>
                 <p><strong>Add community</strong>:<br/> (config)# snmp-server community [ro, rw]</p>
@@ -471,21 +471,21 @@
             </div>
 
             <div>
-                <h2>CDP - Cisco Discovery Protocol</h2>
+                <h2 id="CDP">CDP - Cisco Discovery Protocol</h2>
                 <p><strong>Enables cdp globaly and on all interfaces (default</strong>):<br/> # [no] cdp run</p>
                 <p><strong>Enable cdp on an interface</strong>:<br/> # (config-if)# [no] cdp enable</p>
                 <p><strong>List connected cisco devices (name, local/remote port, [ip] ..):</strong><br/> # show cdp neighbors [detail]</p>
             </div>
 
             <div>
-                <h2>LLDP - Link Layer Discovery Protocol</h2>
+                <h2 id="LLDP">LLDP - Link Layer Discovery Protocol</h2>
                 <p><strong>Enables lldp globaly and on all interfaces</strong>:<br/> # [no] lldp run</p>
                 <p><strong>Enable lldp packet transmission on interface</strong>:<br/> (config-if)# [no] lldp transmit</p>
                 <p><strong>Enable lldp packet reception on interace</strong>:<br/> (config-if)# [no] lddp receive</p>
             </div>
 
             <div>
-                <h2>PPP</h2>
+                <h2 id="PPP">PPP</h2>
                 <p><strong>Create users for pap auth</strong>:<br/> (config)# username fnord password pass</p> 
                 <p><strong>Baud rate. Only on DCE cable</strong>:<br/> (config-if)# clock rate 125000</p><br/>
                 <p><strong>Logical speed used for routing cost calc, RSVP</strong>:<br/> (config-if)# bandwidth 125</p><br/>
@@ -538,7 +538,54 @@
         </section>
 
          <aside>
-            Sidebar
+            <a href="#Cisco Modes">Cisco Modes</a>
+            <a href="#Keyboard Shortcut">Keyboard Shortcut</a>
+            <a href="#Device Configuration">Device Configuration</a>
+            <a href="#Privilege Commands"></a>
+            <a href="#Troubleshoot Networks with Span">Troubleshoot Networks with Span</a>
+            <a href="#Port Security">Port Security</a>
+            <a href="#Port security terms of violation:">Port security terms of violation:</a>
+            <a href="#Troubleshooting Port Security">Troubleshooting Port Security</a>
+            <a href="#Layer2 Switch Vlan Config">Layer2 Switch Vlan Config</a>
+            <a href="#Layer2 Switch Vlan Config">Layer2 Switch Vlan Config</a>
+            <a href="#Layer3 Switch Vlan Config">Layer3 Switch Vlan Config</a>
+            <a href="#Router (on a Stick) Vlan Config">Router (on a Stick) Vlan Config</a>
+            <a href="#Troubleshoot Vlans on a Switch">Troubleshoot Vlans on a Switch</a>
+            <a href="#STP">STP</a>
+            <a href="#Troubleshoot STP"></a>
+            <a href="#Etherchannel (Link Aggregation)"></a>
+            <a href="#Troubleshoot Etherchannel (Link Aggregation)"></a>
+            <a href="#Configure a Serial">Configure a Serial</a>
+            <a href="#ACLs"></a>
+            <a href="#Interface ACLs"></a>
+            <a href="#Troubleshooting ACLs"></a>
+            <a href="#NAT">NAT</a>
+            <a href="#SNAT">SNAT</a>
+            <a href="#DNAT"></a>
+            <a href="#PAT">PAT</a>
+            <a href="#Troubleshooting NAT"></a>
+            <a href="#DHCP Server">DHCP Server</a>
+            <a href="#Troubleshooting DHCP">Troubleshooting DHCP</a>
+            <a href="#HSRP">HSRP</a>
+            <a href="#Troubleshooting HSRP">Troubleshooting HSRP</a>
+            <a href="#SLAs">SLAs</a>
+            <a href="#Troubleshooting SLAs">Troubleshooting SLAs</a>
+            <a href="#Device Management">Device Management</a>
+            <a href="#Firmware Management">Firmware Management</a>
+            <a href="#License Management">License Management</a>
+            <a href="#Reset Password">Reset Password</a>
+            <a href="#Telnet / Console">Telnet / Console</a>
+            <a href="#SSH">SSH</a>
+            <a href="#Clock">Clock</a>
+            <a href="#Disable Unused Services">Disable Unused Services</a>
+            <a href="#Radius">Radius</a>
+            <a href="#TACACS">TACACS</a>
+            <a href="#Syslog">Syslog</a>
+            <a href="#SNMP">SNMP</a>
+            <a href="#CDP">CDP</a>
+            <a href="#LLDP">LLDP</a>
+            <a href="#PPP">PPP</a>
+            
         </aside>
 
         <footer>
