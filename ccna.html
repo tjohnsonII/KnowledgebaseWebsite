@@ -89,14 +89,29 @@
 
             <div>
                 <h3>Basic Network Troubleshooting</h3>
-            </div>
-
+                <p><strong>Show interfaces mac, bandwidth, mtu, packet stats, etc.:</strong> # show interfaces [if-name]</p>
+                <p><strong>Show routes and how they were learned</strong>: # show ip[v6] route [static]</p>
+                <p><strong>Show interfaces ip/arp/icmp/nd... configuration</strong>: # show ip[v6] interface [if-name]</p>
+                <p><strong>Only show ip, status, and operational status</strong>: # show ip[v6] interface brief [if-name]</p>
+                <p><strong>Similar to show ip int brief, w/ cidr, w/o ok/method</strong>: # show protocols [if-name]</p>
+                <p><strong>Show the MAC address table of a switch</strong>: # show mac-address-table</p>
+                <p><strong>Clear the dynamically learned mac address table entries</strong>: # clear mac address-table [dynamic]</p>
+                <p><strong>Show {ip,ipx,appletalk}-mac bindings</strong>: # show arp</p>
+                <p><strong>Show ip-mac bindings</strong>: # show ip arp [{ip, mac, if-name}]</p>
+                <p><strong>Remove arp entry for ip</strong>: # clear [ip] arp 192.168.1.1</p>
+                <p><strong>Show debug messages when receiving/sending arp packets</strong>: # debug arp</p>
+                <p><strong>Disable all previously enabled debugs</strong>: # undebug all</p>
+                <p><strong>Show neighbor discovery table cache</strong>: # show ipv6 neighbors</p>
             <div>
                 <h3>Troubleshoot Networks with Span</h3>
+                <p><strong>Define SPAN #23 output as g1/2</strong>: (config)# monitor session 23 destination interface g1/2</p>
+                <p><strong>Define SPAN #23 input as g1/1</strong>: (config)# monitor session 23 source interface g1/1 {rx,tx,both}</p>
+                <p><strong>Show all configured SPANs</strong>: # show monitor</p>
             </div>
 
             <div>
                 <h2>Port Security</h2>
+                
             </div>
 
             <div>
